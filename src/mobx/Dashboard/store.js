@@ -1,9 +1,11 @@
 import { observable, action, runInAction } from 'mobx';
-import BasicStore, { initLoading } from '../basicStore';
+import BasicStore, { initLoading, storage } from '../basicStore';
 import { isResultError } from '../../utils/index';
 import * as api from '../../servers/dashboard';
 class DashBoardStore extends BasicStore {
-    @observable list = [];
+    // @storage
+    @observable
+    list = [];
 
     @initLoading
     @action
@@ -11,6 +13,8 @@ class DashBoardStore extends BasicStore {
         const list = await api.getTable();
         runInAction(() => {
             this.list = isResultError(list);
+            // this.table = 123;
+            // storage.setItem('calendarView', JSON.stringify(this.table.list));
         });
     }
 }
