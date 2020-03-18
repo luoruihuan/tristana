@@ -26,10 +26,12 @@ class Index extends Component {
 
     render() {
         const { dashboardStore: { list }, dashboardStore } = this.props;
+
+        console.log(444);
         return (
             <section className="dashboard">
-                <OrderSearch handleSubmit={this.handleSubmit} />
-                <OrderTable list={list} isLoading={dashboardStore.isLoading.get('getTable')} />
+                {/* <OrderSearch handleSubmit={this.handleSubmit} />
+                <OrderTable list={list} isLoading={dashboardStore.isLoading.get('getTable')} /> */}
             </section>
         );
     }

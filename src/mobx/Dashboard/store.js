@@ -1,20 +1,20 @@
 import { observable, action, runInAction } from 'mobx';
-import BasicStore, { initLoading, storage } from '../basicStore';
+import BasicStore, { initLoading } from '../basicStore';
 import { isResultError } from '../../utils/index';
+import storage from '../../utils/store';
 import * as api from '../../servers/dashboard';
+import Item from 'antd/lib/list/Item';
 class DashBoardStore extends BasicStore {
-    // @storage
+    @storage.sync('test')
     @observable
     list = [];
 
     @initLoading
     @action
     async getTable() {
-        const list = await api.getTable();
+        const res = await api.getTable();
         runInAction(() => {
-            this.list = isResultError(list);
-            // this.table = 123;
-            // storage.setItem('calendarView', JSON.stringify(this.table.list));
+            this.list = isResultError(res);
         });
     }
 }
