@@ -3,7 +3,7 @@
  * @Author: Jiang 
  * @Date: 2020-03-18 23:03:34 
  * @Last Modified by: Jiang
- * @Last Modified time: 2020-03-18 23:21:56
+ * @Last Modified time: 2020-03-19 11:29:31
  */
 import { action, autorun, observable, extendObservable, computed } from 'mobx';
 
@@ -31,7 +31,7 @@ const storage = {
     setItem: function (key, val, type) {
         try {
             const _storage = getStorageByType(type);
-            if (val == undefined) {
+            if (Object.prototype.toString.call(val) == '[object Undefined]') {
                 _storage.removeItem(key);
             } else {
                 _storage.setItem(key, JSON.stringify(val));
@@ -44,7 +44,7 @@ const storage = {
     removeItem: function (key, type) {
         try {
             const _storage = getStorageByType(type);
-            if (_storage.getItem(key)) {
+            if (!(Object.prototype.toString.call(_storage.getItem(key)) == '[object Undefined]')) {
                 _storage.removeItem(key);
             }
         } catch (e) {
@@ -88,7 +88,7 @@ storage.sync = function (key, type) {
             });
         }
 
-        if (descriptor && initialValue) {
+        if (descriptor && !(Object.prototype.toString.call(initialValue) == '[object Null]' ||  Object.prototype.toString.call(initialValue) == '[object Undefined]')) {
             descriptor.initializer = function () {
                 return initialValue;
             };
@@ -111,7 +111,7 @@ storage.sync.observable = action(function (object, attr, key) {
     console.warn('`storage.sync.observable` is deprecated, use `storage.sync` instead');
     const value = storage.getItem(key);
 
-    if (value) object[attr] = value;
+    if (!(Object.prototype.toString.call(value) == '[object Null]' ||  Object.prototype.toString.call(value) == '[object Undefined]')) object[attr] = value;
     autorun(() => storage.setItem(key, object[attr]));
 });
 
