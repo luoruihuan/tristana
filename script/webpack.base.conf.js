@@ -68,12 +68,16 @@ module.exports = {
                 loader: 'file-loader',
                 options: {
                     outputPath: './assets/images',
-                    publicPath: '../assets/images/'
+                    publicPath: '../assets/images/',
+                    esModule: false
                 }
             },
             {
-                test: /\.(woff|woff2|eot|ttf|otf)$/,
-                loader: 'file-loader'
+                test: /\.(woff|woff2|eot|ttf|otf|mp3)$/,
+                loader: 'file-loader',
+                options: {
+                    esModule: false
+                }
             }
         ]
     },
@@ -97,8 +101,8 @@ module.exports = {
         cleanWebpack: new CleanWebpackPlugin(),
         // 抽取css
         miniCssExtract: new MiniCssExtractPlugin({
-            filename: './css/[name].[hash].css',
-            chunkFilename: './css/[id].[hash].css',
+            filename: JSON.stringify(process.env.ENV_LWD) == 'development' ? './css/[name].[hash].css' : './css/[id].[hash].css',
+            chunkFilename: JSON.stringify(process.env.ENV_LWD) == 'development' ? './css/[id].css' : './css/[id].[hash].css',
             ignoreOrder: true
         }),
         namedModules: new webpack.NamedModulesPlugin(),
