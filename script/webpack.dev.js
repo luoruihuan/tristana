@@ -17,7 +17,8 @@ module.exports = {
         webpackBase.plugins.optimizeCssAssets,
         webpackBase.plugins.progressBarPlugin,
         webpackBase.plugins.ContextReplacementPlugin,
-        webpackBase.plugins.DefinePlugin
+        webpackBase.plugins.DefinePlugin,
+        webpackBase.plugins.AntdDayjsWebpackPlugin
     ],
     // devServer: webpackBase.devServer,
     externals: webpackBase.externals

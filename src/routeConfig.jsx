@@ -36,19 +36,7 @@ const routes = [
     }
 ];
 
-const RouteWithSubRoutes = route => {
-    return <PrivateRoute exact path={route.path} component={route.component} />;
-
-    // return (
-    //     <Route
-    //         exact
-    //         path={route.path}
-    //         render={props => (
-    //             <route.component {...props} />
-    //         )}
-    //     />
-    // );
-};
+const RouteWithSubRoutes = route => <PrivateRoute exact path={route.path} component={route.component} />;
 
 const routeConfig = routes.map((route, i) => <RouteWithSubRoutes key={i} {...route} />);
 export default routeConfig;

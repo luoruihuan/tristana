@@ -23,12 +23,8 @@ class Index extends Component {
     }
 
     componentDidMount() {
-        // socket注销
-        agentOffline();
         disconnect();
         removeAllListeners();
-        // socket 注册
-        agentOnline();
         onConnect();
     }
 

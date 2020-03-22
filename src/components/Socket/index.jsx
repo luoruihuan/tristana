@@ -4,7 +4,7 @@
  * @Author: Jiang
  * @Date: 2019-08-27 18:00:15
  * @Last Modified by: Jiang
- * @Last Modified time: 2020-03-21 11:08:55
+ * @Last Modified time: 2020-03-22 19:39:29
  */
 import io from 'socket.io-client';
 import { message } from 'antd';
@@ -65,4 +65,8 @@ export {
     onConnect,
     removeAllListeners,
     close
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> 327f4b1b220fe0ad71b8d958c53b831afa190527
