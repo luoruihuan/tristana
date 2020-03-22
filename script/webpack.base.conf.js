@@ -98,8 +98,8 @@ module.exports = {
         cleanWebpack: new CleanWebpackPlugin(),
         // 抽取css
         miniCssExtract: new MiniCssExtractPlugin({
-            filename: './css/[name].[hash].css',
-            chunkFilename: './css/[id].[hash].css',
+            filename: process.env.ENV_LWD == 'development' ? './css/[id].css' : './css/[id].[hash].css',
+            chunkFilename: process.env.ENV_LWD == 'development' ? './css/[id].css' : './css/[id].[hash].css',
             ignoreOrder: true
         }),
         namedModules: new webpack.NamedModulesPlugin(),
