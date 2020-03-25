@@ -4,13 +4,10 @@
  * @Author: Jiang
  * @Date: 2019-08-27 18:00:15
  * @Last Modified by: Jiang
- * @Last Modified time: 2020-03-22 19:41:11
+ * @Last Modified time: 2020-03-26 06:41:39
  */
-import io from 'socket.io-client';
-import { message } from 'antd';
-import { SOCKET_URL } from '../../config';
 
-let SOCKET = '', USER = '';
+let SOCKET = '';
 
 // 服务器断开链接
 const serverDisconnect = () => {
@@ -56,7 +53,7 @@ const close = () => {
     offConnect();
     disconnect();
     removeAllListeners();
-}
+};
 
 export {
     disconnect,

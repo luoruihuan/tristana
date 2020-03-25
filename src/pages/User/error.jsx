@@ -2,22 +2,22 @@ import React from 'react';
 import './error.less';
 
 class Error extends React.Component {
-    
+
     componentDidMount(){
-        this.error404()
+        this.error404();
     }
 
     componentWillUnmount(){
-        window.cancelAnimationFrame(this.myReq)
+        window.cancelAnimationFrame(this.myReq);
     }
 
     error404 = ()=>{
-        const c = document.getElementById("canv");
-        const $ = c.getContext("2d");
+        const c = document.getElementById('canv');
+        const $ = c.getContext('2d');
         const w = c.width;
         const h = c.height;
         const id = $.createImageData(w, h);
-        const _this = this
+        const _this = this;
         function draw() {
             _this.myReq = window.requestAnimationFrame(draw);
             let r;
@@ -32,7 +32,7 @@ class Error extends React.Component {
     }
     render () {
         return (
-            <div className='error404'>
+            <div className="error404">
                 <svg className="overlay text" viewBox="0 0 900 400">
                     <symbol id="main">
                         <text textAnchor="middle" x="50%" y="50%" dy="0.25em" className="txt">404</text>
@@ -59,8 +59,8 @@ class Error extends React.Component {
                     </h1>
                 </section>
             </div>
-        )
+        );
     }
 }
 
-export default Error
+export default Error;

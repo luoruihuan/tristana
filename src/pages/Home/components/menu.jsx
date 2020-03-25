@@ -4,9 +4,7 @@
  */
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import { HomeOutlined, ShoppingCartOutlined, EditOutlined } from '@ant-design/icons';
-
-import { Menu } from 'antd';
+import { Menu, Icon } from 'antd';
 
 
 class Index extends Component {
@@ -51,19 +49,19 @@ class Index extends Component {
                 }}
             >
                 <Menu.Item key="/dashboard">
-                    <HomeOutlined />
+                    <Icon type="home" />
                     <span>
                         工作台
                     </span>
                 </Menu.Item>
                 <Menu.Item key="/add/goods">
-                    <ShoppingCartOutlined />
+                    <Icon type="shopping" />
                     <span>
                         添加商品
                     </span>
                 </Menu.Item>
                 <Menu.Item key="/counter">
-                    <EditOutlined />
+                    <Icon type="edit" />
                     <span>
                         计数器
                     </span>
