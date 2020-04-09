@@ -9,7 +9,7 @@ import { Switch, Router, Route } from 'react-router-dom';
 import { createHashHistory } from 'history';
 import Home from '../src/pages/Home/index';
 import Login  from '../src/pages/User/login';
-import Stores from './mobx/rootStore';
+import RootStore from './mobx/rootStore';
 import './styles/index.less';
 
 const history = createHashHistory();
@@ -17,7 +17,7 @@ dayjs.locale('zh-cn');
 
 ReactDOM.render(
     <ConfigProvider locale={zh_CN}>
-        <Provider {...Stores}>
+        <Provider rootStore={RootStore}>
             <Router history={history}>
                 <Switch>
                     <Route path="/user/login" exact component={Login} />
