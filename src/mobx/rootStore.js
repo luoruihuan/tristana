@@ -1,11 +1,16 @@
-import DashboardStore from './Dashboard/store';
-import AddGoodsStore from './AddGoods/store';
-import CounterStore from './CounterStore/store';
+import { observable, action } from 'mobx';
+import { configure } from 'mobx';
+
+configure({ enforceActions: 'always' });
+
 class Store {
-    constructor() {
-        this.dashboardStore = new DashboardStore();
-        this.addGoodsStore = new AddGoodsStore();
-        this.counterStore = new CounterStore();
+
+    @observable
+    test = '123';
+
+    @action('test')
+    updateCount() {
+        this.test = '456';
     }
 }
 export default new Store();

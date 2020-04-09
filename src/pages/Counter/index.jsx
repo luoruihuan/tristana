@@ -1,20 +1,22 @@
 import React, { Component } from 'react';
-import { inject, observer } from 'mobx-react';
+import { observer } from 'mobx-react';
+import CounterStore from '../../mobx/CounterStore/store';
 import './index.less';
-@inject('counterStore')
+
 @observer
 class Index extends Component {
     constructor(props) {
         super(props);
+        this.counterStore = new CounterStore();
     }
 
     render() {
-        const { counterStore: { obj }, counterStore } = this.props;
+        const { obj } = this.counterStore;
         return (
             <section className="counter">
-                <button onClick={() => counterStore.add()}>+</button>
+                <button onClick={() => this.counterStore.add()}>+</button>
                 <span>count is: {obj.count}</span>
-                <button onClick={() => counterStore.reduce()}>-</button>
+                <button onClick={() => this.counterStore.reduce()}>-</button>
             </section>
         );
     }

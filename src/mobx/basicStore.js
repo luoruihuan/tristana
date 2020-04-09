@@ -1,13 +1,8 @@
 import { action, observable } from 'mobx';
-import {
-    serialize, deserialize,
-    update,
-    serializable, getDefaultModelSchema
-} from 'serializr';
 
 export default class BasicStore {
     @observable isLoading  = observable.map({ });
-  
+
     @action
     changeLoadingStatus (loadingType, type) {
         this.isLoading.set(loadingType, type);
@@ -25,13 +20,13 @@ export function initLoading(target, key, descriptor) {
             res = await oldValue.apply(this, args);
         // eslint-disable-next-line no-useless-catch
         } catch (error) {
-            // 做一些错误上报之类的处理 
+            // 做一些错误上报之类的处理
             throw error;
         } finally {
             this.changeLoadingStatus(key, false);
         }
         return res;
     };
-    
+
     return descriptor;
 }
