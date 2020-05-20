@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -49,7 +50,7 @@ module.exports = {
             {
                 test: /\.(css|less)$/,
                 use: [
-                    MiniCssExtractPlugin.loader,
+                    process.env.ENV_LWD == 'development' ? { loader: 'style-loader' } : MiniCssExtractPlugin.loader,
                     {
                         loader: 'css-loader',
                         options: {
@@ -129,13 +130,17 @@ module.exports = {
         AntdDayjsWebpackPlugin: new AntdDayjsWebpackPlugin(),
         DefinePlugin: new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify(process.env.ENV_LWD)
-        })
+        }),
+        HotModuleReplacementPlugin: new webpack.HotModuleReplacementPlugin()
     },
     devServer: {
-        hot: false,
+        contentBase: path.resolve(__dirname, 'dist'),
+        hot: true,
         historyApiFallback: true,
-        contentBase: './',
         compress: true
+    },
+    watchOptions: {
+        aggregateTimeout: 600
     },
     // externals 排除对应的包，注：排除掉的包必须要用script标签引入下
     externals: {
