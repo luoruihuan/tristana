@@ -15,6 +15,10 @@ import './styles/index.less';
 const history = createHashHistory();
 dayjs.locale('zh-cn');
 
+if (module.hot) {
+    module.hot.accept();
+}
+
 ReactDOM.render(
     <ConfigProvider locale={zh_CN}>
         <Provider rootStore={RootStore}>
