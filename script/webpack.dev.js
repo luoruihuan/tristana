@@ -17,8 +17,10 @@ module.exports = {
         webpackBase.plugins.optimizeCssAssets,
         webpackBase.plugins.ContextReplacementPlugin,
         webpackBase.plugins.DefinePlugin,
-        webpackBase.plugins.AntdDayjsWebpackPlugin
+        webpackBase.plugins.AntdDayjsWebpackPlugin,
+        webpackBase.plugins.HotModuleReplacementPlugin
     ],
-    // devServer: webpackBase.devServer,
+    devServer: webpackBase.devServer,
+    watchOptions: webpackBase.watchOptions,
     externals: webpackBase.externals
 };
