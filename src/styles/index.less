@@ -12,13 +12,40 @@ p {
     word-spacing: 0.05em;
 }
 
-.ant-form label {
-    width: 80px;
+ul,
+li {
+    list-style: none;
 }
 
-.ant-form-inline .ant-form-item {
-    flex: none;
-    flex-wrap: nowrap;
-    margin-right: 16px;
-    margin-bottom: 16px;
+.pagination {
+    margin-top: 24px !important;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.article-filter-button {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 24px;
+}
+
+.hidden-label .ant-form-item-label label {
+    visibility: hidden;
+}
+
+.article-form {
+    .ant-form-item-label {
+        display: inline-block;
+        overflow: hidden;
+        line-height: 39.9999px;
+        white-space: nowrap;
+        text-align: right;
+        vertical-align: middle;
+        width: 80px;
+    }
+}
+
+.dividing-line {
+    margin-left: 4px;
+    margin-right: 4px;
 }

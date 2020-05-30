@@ -3,8 +3,9 @@
  * @Date: 2019-07-18 10:33:21
  */
 import React, { Component } from 'react';
+import { HomeOutlined, ShoppingCartOutlined, AccountBookOutlined } from '@ant-design/icons';
 import { withRouter } from 'react-router-dom';
-import { Menu, Icon } from 'antd';
+import { Menu } from 'antd';
 
 
 class Index extends Component {
@@ -49,19 +50,19 @@ class Index extends Component {
                 }}
             >
                 <Menu.Item key="/dashboard">
-                    <Icon type="home" />
+                    <HomeOutlined />
                     <span>
                         工作台
                     </span>
                 </Menu.Item>
                 <Menu.Item key="/add/goods">
-                    <Icon type="shopping" />
+                    <ShoppingCartOutlined />
                     <span>
                         添加商品
                     </span>
                 </Menu.Item>
                 <Menu.Item key="/counter">
-                    <Icon type="edit" />
+                    <AccountBookOutlined />
                     <span>
                         计数器
                     </span>

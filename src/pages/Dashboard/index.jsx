@@ -1,26 +1,25 @@
 import React, { Component } from 'react';
-import { observer, inject } from 'mobx-react';
+import { inject, observer } from 'mobx-react';
 import { Table } from 'antd';
-import DashboardStore from '../../mobx/Dashboard/store';
 import './index.less';
 
-@inject('rootStore')
+@inject('dashboardStore')
 @observer
 class Index extends Component {
     constructor(props) {
         super(props);
-        this.dashboardStore = new DashboardStore();
     }
 
     componentDidMount() {
-        this.dashboardStore.getTable();
+        const { dashboardStore } = this.props;
+        dashboardStore.getTable();
     }
 
     render() {
-        const { list } = this.dashboardStore;
+        const { dashboardStore: { list }, dashboardStore } = this.props;
         return (
             <section className="dashboard">
-                <OrderTable list={list} isLoading={this.dashboardStore.isLoading.get('getTable')} />
+                <OrderTable list={list} isLoading={dashboardStore.isLoading.get('getTable')} />
             </section>
         );
     }

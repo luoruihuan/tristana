@@ -7,9 +7,10 @@ import zh_CN from 'antd/lib/locale-provider/zh_CN';
 import { Provider } from 'mobx-react';
 import { Switch, Router, Route } from 'react-router-dom';
 import { createHashHistory } from 'history';
+import ErrorBoundary from './components/ErrorBoundary/index';
 import Home from '../src/pages/Home/index';
 import Login  from '../src/pages/User/login';
-import RootStore from './mobx/rootStore';
+import Stores from './mobx/rootStore';
 import './styles/index.less';
 
 const history = createHashHistory();
@@ -21,11 +22,13 @@ if (module.hot) {
 
 ReactDOM.render(
     <ConfigProvider locale={zh_CN}>
-        <Provider rootStore={RootStore}>
+        <Provider {...Stores}>
             <Router history={history}>
                 <Switch>
                     <Route path="/user/login" exact component={Login} />
-                    <Home />
+                    <ErrorBoundary>
+                        <Home />
+                    </ErrorBoundary>
                 </Switch>
             </Router>
         </Provider>

@@ -3,11 +3,12 @@
  * @Author: Jiang
  * @Date: 2019-06-13 16:45:59
  * @Last Modified by: Jiang
- * @Last Modified time: 2020-03-26 06:32:40
+ * @Last Modified time: 2020-03-26 06:45:16
  */
 
 import React, { Component } from 'react';
-import { Form, Input, Button, Icon, Checkbox } from 'antd';
+import { Form, Input, Button, Checkbox } from 'antd';
+import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import './login.less';
 
 class Login extends Component {
@@ -17,85 +18,62 @@ class Login extends Component {
     }
 
     // 表单提交
-    handleSubmit = e => {
-        e.preventDefault();
-        const { form, history } = this.props;
-        form.validateFields((err) => {
-            if (!err) {
-                localStorage.token = 'login';
-                history.push('/dashboard');
-            }
-        });
-    }
-
-    // 表单
-    fieldDecorator = () => {
-        const { form } = this.props;
-        const formProps = {
-            // 用户名
-            loginName: form.getFieldDecorator('loginName', {
-                rules: [
-                    {
-                        required: true,
-                        message: '请输入账号'
-                    }
-                ]
-            }),
-            // 密码
-            password: form.getFieldDecorator('password', {
-                rules: [
-                    {
-                        required: true,
-                        message: '请输入密码'
-                    }
-                ]
-            }),
-            // 密码
-            remember: form.getFieldDecorator('remember')
-        };
-        return formProps;
+    handleSubmit = values => {
+        const { history } = this.props;
+        console.log('Success:', values);
+        localStorage.token = 'login';
+        history.push('/dashboard');
     }
 
     render() {
-        const formProps = this.fieldDecorator();
         return (
             <main className="login">
                 <Form
-                    onSubmit={this.handleSubmit}
+                    onFinish={this.handleSubmit}
                     className="login-form"
                 >
-                    <Form.Item>
-                        {
-                            formProps.loginName(
-                                <Input
-                                    prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                                    size="large"
-                                    addonBefore="账号"
-                                    placeholder="请输入账号"
-                                />
-                            )
+                    <Form.Item
+                        name="loginName"
+                        rules={
+                            [
+                                {
+                                    required: true,
+                                    message: '请输入账号'
+                                }
+                            ]
                         }
+                    >
+                        <Input
+                            prefix={<UserOutlined className="site-form-item-icon" />}
+                            size="large"
+                            addonBefore="账号"
+                            placeholder="请输入账号"
+                        />
                     </Form.Item>
-                    <Form.Item>
-                        {
-                            formProps.password(
-                                <Input
-                                    prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                                    size="large"
-                                    type="password"
-                                    addonBefore="密码"
-                                    placeholder="请输入密码"
-                                />
-                            )
+                    <Form.Item
+                        name="password"
+                        rules={
+                            [
+                                {
+                                    required: true,
+                                    message: '请输入密码'
+                                }
+                            ]
                         }
+                    >
+                        <Input
+                            prefix={<LockOutlined className="site-form-item-icon" />}
+                            size="large"
+                            type="password"
+                            addonBefore="密码"
+                            placeholder="请输入密码"
+                        />
                     </Form.Item>
-                    <Form.Item>
+                    <Form.Item
+                        name="remember"
+                    >
                         <article className="login-form-remember">
-                            {
-                                formProps.remember(
-                                    <Checkbox>Remember me</Checkbox>
-                                )
-                            }
+                            <Checkbox>Remember me</Checkbox>
                             <a className="login-form-forgot" href="">
                                 Forgot password
                             </a>
@@ -117,6 +95,4 @@ class Login extends Component {
     }
 }
 
-const LoginForm = Form.create({ name: 'login' })(Login);
-
-export default LoginForm;
+export default Login;

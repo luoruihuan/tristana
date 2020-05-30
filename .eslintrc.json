@@ -26,18 +26,18 @@
     ],
     "rules": {
         "quotes": [
-            2,
+            0,
             "single"
         ],
         "no-console": 0,
-        "no-debugger": 1,
-        "no-var": 2,
-        "semi": 2,
+        "no-debugger": 0,
+        "no-var": 0,
+        "semi": ["error", "always"],
         "no-irregular-whitespace": 0,
-        "no-trailing-spaces": 1,
+        "no-trailing-spaces": 0,
         "eol-last": 0,
         "no-unused-vars": [
-            2,
+            0,
             {
                 "vars": "all",
                 "args": "after-used"
@@ -65,7 +65,7 @@
         "no-script-url": 2,
         "no-use-before-define": 2,
         "jsx-quotes": [
-            2,
+            0,
             "prefer-double"
         ],
         "react/display-name": 0,
