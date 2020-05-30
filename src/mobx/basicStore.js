@@ -2,7 +2,7 @@ import { action, observable } from 'mobx';
 
 export default class BasicStore {
     @observable isLoading  = observable.map({ });
-
+  
     @action
     changeLoadingStatus (loadingType, type) {
         this.isLoading.set(loadingType, type);
@@ -27,6 +27,6 @@ export function initLoading(target, key, descriptor) {
         }
         return res;
     };
-
+    
     return descriptor;
 }

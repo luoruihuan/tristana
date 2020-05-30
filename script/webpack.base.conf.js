@@ -9,6 +9,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     stats: {
@@ -131,6 +132,9 @@ module.exports = {
         DefinePlugin: new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify(process.env.ENV_LWD)
         }),
+        CopyPlugin: new CopyPlugin([
+            { from: './src/assets/js', to: '../dist/assets/js', toType: 'dir' }
+        ]),
         HotModuleReplacementPlugin: new webpack.HotModuleReplacementPlugin()
     },
     devServer: {

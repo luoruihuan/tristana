@@ -1,6 +1,6 @@
 module.exports = {
     'extends': 'stylelint-config-standard',
-    'ignoreFiles': ['**/*.js', '**/*.jsx'],
+    'ignoreFiles': ['**/*.js', '**/*.jsx', '**/*.png', '**/*.jpg', '**/*.jpeg', '**/*.gif', '**/*.mp3'],
     'rules': {
         'at-rule-no-unknown': [ true, {
             'ignoreAtRules': [
@@ -12,12 +12,13 @@ module.exports = {
         'number-leading-zero': null,
         'unit-whitelist': ['em', 'rem', 's', 'px', 'deg', 'all', 'vh', '%'],
         'no-eol-whitespace': [true, { 'ignore': 'empty-lines' }],
-        'selector-list-comma-newline-after': 'never-multi-line',
         'declaration-block-trailing-semicolon': 'always',
         'no-missing-end-of-source-newline': true,
         'selector-pseudo-class-no-unknown': [ true, {
             ignorePseudoClasses: ['global']
         }],
-        'no-descending-specificity': null
+        'no-descending-specificity': null,
+        'selector-list-comma-newline-after': 'always',
+        'selector-pseudo-element-colon-notation': 'single'
     }
 };

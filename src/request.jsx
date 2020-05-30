@@ -1,6 +1,7 @@
 import { message } from 'antd';
-import { BASE_API } from './config';
 import axios from 'axios';
+import { getCookie } from './utils/index';
+import { BASE_API } from './config';
 
 
 // 创建axios实例
@@ -8,33 +9,32 @@ const service = axios.create({
     baseURL: BASE_API,
     timeout: 50000,
     withCredentials: false, // 跨域携带cookie
-    xsrfCookieName: 'xsrf-token'  //当创建实例的时候配置默认配置
-});  
+    xsrfCookieName: 'xsrf-token' //当创建实例的时候配置默认配置,
+});
 
 
 // 请求拦截器
 service.interceptors.request.use(
     function(config) {
-        // 每次请求带上token和用户编号
-        // if (store.getters.token) {
-        //  config.headers['Token'] = getToken()
-        //  config.headers['Authorization'] = store.getters.userId
-        // }
+        const cookie = getCookie() ? getCookie() : '';
+        if (cookie) {
+            config.headers['access-token'] = cookie;
+        }
         config.headers['Content-Type'] = 'application/json;charset=UTF-8';
         // 每次请求带上时间戳 防刷处理
-        if (config.method === 'get' || config.method === 'delete') {
+        if (config.method === 'get') {
             config.params = {
                 ...config.params,
                 timestamp: Date.parse(new Date()) / 1000
             };
         }
 
-        if (config.method === 'post' || config.method === 'put') {
-            config.data = {
-                ...config.data,
-                timestamp: Date.parse(new Date()) / 1000
-            };
-        }
+        // if (config.method === 'post' || config.method === 'put' || config.method === 'delete') {
+        //     config.data = {
+        //         ...config.data,
+        //         timestamp: Date.parse(new Date()) / 1000
+        //     };
+        // }
         return config;
     },
     function(error) {

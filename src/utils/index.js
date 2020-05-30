@@ -1,12 +1,84 @@
+/* eslint-disable no-undef */
 import { message } from 'antd';
 
-// 合并特定的reducer
-export function getObjReducer(state, payload, target) {
-    if (!state && !payload) {
-        return;
+// 删除cookie
+export function deleteCookie() {
+    document.cookie = 'token=';
+}
+
+// 日志记录
+export function logger(level, msg) {
+    switch(level) {
+        case 'error':
+            console.error(new Date(), JSON.stringify(msg));
+            break;
+        case 'warn':
+            console.warn(new Date(), JSON.stringify(msg));
+            break;
+        case 'log':
+            console.log(new Date(), JSON.stringify(msg));
+            break;
     }
-    let oldState = state.toJS();
-    return Object.assign({}, oldState[target], payload);
+}
+
+// 格式化秒，转换成00:00:00
+export function formatSeconds(value) {
+    // 秒
+    let theTime = '00';
+    // 分
+    let theTime1 = '00';
+    // 小时 
+    let theTime2 = '00';
+    if(value > 60) {
+        theTime1 = parseInt(value / 60); 
+        theTime = parseInt(value % 60); 
+        if(theTime1 > 60) {
+            theTime2 = parseInt(theTime1 / 60); 
+            theTime1 = parseInt(theTime1 % 60); 
+            if(theTime2 > 24) {
+                theTime2 = parseInt(theTime2 % 24);
+            }
+        }
+    } else {
+        theTime = value;
+    }
+    let result = '';
+    result = '' + (parseInt(theTime) >= 10 ? parseInt(theTime) : '0' + parseInt(theTime));
+    result = '' + (parseInt(theTime1) >= 10 ? parseInt(theTime1) : '0' + parseInt(theTime1)) + ':' + result; 
+    result = '' + (parseInt(theTime2) > 10 ? parseInt(theTime2) : '0' + parseInt(theTime2)) + ':' + result; 
+    return result;
+}
+
+// 读取cookie
+export function getCookie() {
+    const cookies = document.cookie.split(';');
+    let cookie;
+    cookies.forEach(item => {
+        if(item.split('=')[0].trim() == 'token') {
+            cookie = item.split('=')[1];
+        }
+    });
+    return cookie;
+}
+
+// 校验当前用户是否开启权限
+export function getUserMedia() {
+    return new Promise((resolve, reject) => {
+        navigator.mediaDevices.getUserMedia({ audio: true, video: true })
+            .then((stream) => {
+                resolve(stream);
+            })
+            .catch((err) => {
+                reject(err);
+            });
+    });
+}
+
+// 移出流轨道
+export function removeTracks(stream) {
+    stream.getTracks().forEach((track) => {
+        track.stop && track.stop();
+    });
 }
 
 // 检查 value 是不是函数
@@ -79,27 +151,25 @@ export function isEmpty(value) {
     return false;
 }
 
-// 判断返回值是否报错
-export function isResultError (params, hasMessage = true) {
-    if (!isEmpty(params) && params.code == 200) return params.listData;
-    
-    if (!isEmpty(params) && params.code != 200) {
-        if(hasMessage) message.error(params.errInfo);
+/**
+ * 判断返回值是否错误
+ * hasMessage 默认值为true，显示消息
+ * isAll 默认值为false，是否需要返回所有信息
+ * @param {*} params 
+ * @param {*} hasMessage 
+ * @param {*} isAll 
+ */
+export function isResultError (params, hasMessage = true, isAll = false) {
+    if (!isEmpty(params) && params.errCode == 0) {
+        if(isAll) return params;
+        return params.result;
     }
-}
-
-// 检测是否为PC端浏览器模式
-export function isPCBroswer() {
-    let e = navigator.userAgent.toLowerCase()
-        , t = 'ipad' == e.match(/ipad/i)
-        , i = 'iphone' == e.match(/iphone/i)
-        , r = 'midp' == e.match(/midp/i)
-        , n = 'rv:1.2.3.4' == e.match(/rv:1.2.3.4/i)
-        , a = 'ucweb' == e.match(/ucweb/i)
-        , o = 'android' == e.match(/android/i)
-        , s = 'windows ce' == e.match(/windows ce/i)
-        , l = 'windows mobile' == e.match(/windows mobile/i);
-    return !(t || i || r || n || a || o || s || l);
+    
+    if (!isEmpty(params) && params.errCode != 0) {
+        if(hasMessage) message.error(params.errInfo);
+        if(isAll) return params;
+        return '';
+    }
 }
 
 // 数组去重，返回一个新数组
@@ -143,32 +213,84 @@ export function getUrlParam() {
     return params;
 }
 
-// 全屏
-export function toFullScreen() {
-    let elem = document.body;
-    elem.webkitRequestFullScreen
-        ? elem.webkitRequestFullScreen()
-        : elem.mozRequestFullScreen
-            ? elem.mozRequestFullScreen()
-            : elem.msRequestFullscreen
-                ? elem.msRequestFullscreen()
-                : elem.requestFullScreen
-                    ? elem.requestFullScreen()
-                    : false;
+// 获取图片base64
+export function getUrlBase64(url) {
+    return new Promise((resolve, reject) => {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        const img = new Image();
+        img.crossOrigin = 'Anonymous';
+        img.onload = () => {
+            canvas.width = img.width;
+            canvas.height = img.height;
+            ctx.drawImage(img, 0, 0, img.width, img.height);
+            resolve(canvas.toDataURL());
+        };
+        img.src = url + '?time=' + new Date().valueOf();
+    });
 }
 
-// 退出全屏
-export function exitFullscreen() {
-    let elem = parent.document;
-    elem.webkitCancelFullScreen
-        ? elem.webkitCancelFullScreen()
-        : elem.mozCancelFullScreen
-            ? elem.mozCancelFullScreen()
-            : elem.cancelFullScreen
-                ? elem.cancelFullScreen()
-                : elem.msExitFullscreen
-                    ? elem.msExitFullscreen()
-                    : elem.exitFullscreen
-                        ? elem.exitFullscreen()
-                        : false;
+// 获取pdf base64
+export function getPdfBase64(url) {
+    return new Promise((resolve, reject) => {
+        const showPdf = document.getElementById('show-pdf'); 
+        const childs = showPdf.childNodes; 
+        for(let i = 0; i < childs.length; i++) {
+            showPdf.removeChild(childs[i]); 
+        }
+        const loadingTask = pdfjsLib.getDocument(url);
+        loadingTask.promise.then((pdf) => {
+            const pages = pdf.numPages;
+            // 添加canvas, 根据pdf的页数添加
+            for (let i = 1; i <= pages; i++) {
+                const canvas = document.createElement('canvas');
+                const showPdf = document.getElementById('show-pdf');
+                canvas.setAttribute('id', 'canvas' + i.toString());
+                showPdf.appendChild(canvas);
+            }
+            let count = 0;
+            for (let i = 1; i <= pages; i++) {
+                pdf.getPage(i).then((page) => {
+                    const viewport = page.getViewport({ scale: 1.5 });
+                    const canvas = document.getElementById(('canvas' + i).toString());
+                    const context = canvas.getContext('2d');
+                    canvas.height = viewport.height;
+                    canvas.width = viewport.width;
+                    const renderContext = {
+                        canvasContext: context,
+                        viewport: viewport
+                    };
+                    page.render(renderContext).promise.then(() => {
+                        count++;
+                        // 已全部完成绘制
+                        if(count == pages) {
+                            resolve();
+                        }
+                    });
+                });
+            }
+        });
+    });
+}
+
+// 下载视频地址
+export function downloadVideoUrl(url) {
+    return new Promise((resolve, reject) => {
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', url);
+        xhr.responseType = 'blob';
+        xhr.onload = function(e) {
+            if (e.currentTarget.status == 200) {
+                var link = document.createElement('a');
+                link.href = window.URL.createObjectURL(new Blob([xhr.response]));
+                link.download = '视频.mp4';
+                link.click();
+                link.remove();
+                resolve();
+            }
+
+            if(e.currentTarget.status != 200) reject();
+        };
+        xhr.send();
+    });
 }
