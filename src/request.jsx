@@ -16,10 +16,10 @@ const service = axios.create({
 // 请求拦截器
 service.interceptors.request.use(
     function(config) {
-        const cookie = getCookie() ? getCookie() : '';
-        if (cookie) {
-            config.headers['access-token'] = cookie;
-        }
+        // const cookie = getCookie() ? getCookie() : '';
+        // if (cookie) {
+        //     config.headers['access-token'] = cookie;
+        // }
         config.headers['Content-Type'] = 'application/json;charset=UTF-8';
         // 每次请求带上时间戳 防刷处理
         if (config.method === 'get') {
