@@ -3,7 +3,7 @@ import DashboardStore from './Dashboard/store';
 import AddGoodsStore from './AddGoods/store';
 import CounterStore from './CounterStore/store';
 
-// configure({ enforceActions: 'always' });
+configure({ enforceActions: 'always' });
 class Store {
     constructor() {
         this.dashboardStore = new DashboardStore();
