@@ -4,8 +4,10 @@
  * @Author: Jiang
  * @Date: 2019-08-27 18:00:15
  * @Last Modified by: Jiang
- * @Last Modified time: 2020-03-26 06:41:39
+ * @Last Modified time: 2020-06-16 22:15:34
  */
+
+import io from 'socket.io';
 
 let SOCKET = '';
 
