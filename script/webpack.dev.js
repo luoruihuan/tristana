@@ -22,4 +22,5 @@ module.exports = {
     ],
     devServer: webpackBase.devServer,
     watchOptions: webpackBase.watchOptions
+    // externals: webpackBase.externals
 };

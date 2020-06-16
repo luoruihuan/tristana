@@ -28,8 +28,8 @@ const config = {
         webpackBase.plugins.ContextReplacementPlugin,
         webpackBase.plugins.DefinePlugin,
         webpackBase.plugins.AntdDayjsWebpackPlugin
-    ],
-    externals: webpackBase.externals
+    ]
+    // externals: webpackBase.externals
 };
 
 module.exports = smp.wrap(config);
