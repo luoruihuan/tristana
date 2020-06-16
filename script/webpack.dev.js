@@ -21,6 +21,6 @@ module.exports = {
         webpackBase.plugins.HotModuleReplacementPlugin
     ],
     devServer: webpackBase.devServer,
-    watchOptions: webpackBase.watchOptions,
-    externals: webpackBase.externals
+    watchOptions: webpackBase.watchOptions
+    // externals: webpackBase.externals
 };

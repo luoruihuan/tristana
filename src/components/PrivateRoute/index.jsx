@@ -3,7 +3,7 @@
  * @Author: Jiang
  * @Date: 2020-03-11 21:42:00
  * @Last Modified by: Jiang
- * @Last Modified time: 2020-03-14 12:25:54
+ * @Last Modified time: 2020-06-16 22:14:09
  */
 
 import React, { lazy } from 'react';
@@ -13,7 +13,13 @@ import PropTypes from 'prop-types';
 const Error = lazy(() => import(/* webpackChunkName: "Error"*/'./../../pages/User/error'));
 
 class PrivateRoute extends React.Component {
-    componentWillMount() {
+
+    constructor(props) {
+        super(props);
+        this.state = { isAuthenticated: true };
+    }
+
+    componentDidMount() {
         let isAuthenticated = localStorage.token ? true : false;
         this.setState({ isAuthenticated });
 
@@ -33,7 +39,7 @@ class PrivateRoute extends React.Component {
                 exact={exact}
                 strict={strict} render={(props) => (<Component {...props} />)}
             />
-        ) : <Error />
+        ) : <Error />;
     }
 }
 
@@ -43,9 +49,9 @@ PrivateRoute.propTypes = {
     // exact默认为false，如果为true时，需要和路由相同时才能匹配，但是如果有斜杠也是可以匹配上的。
     exact: PropTypes.bool,
     // strict默认为false，如果为true时，路由后面有斜杠而url中没有斜杠，是不匹配的
-    strict: PropTypes.bool,
+    strict: PropTypes.bool
     // 页面组件
-    component: PropTypes.func.isRequired
+    // component: PropTypes.func.isRequired
 };
 
 export default withRouter(PrivateRoute);
