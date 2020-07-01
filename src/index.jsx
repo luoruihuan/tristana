@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import * as Sentry from '@sentry/react';
 import { ConfigProvider } from 'antd';
 import 'dayjs/locale/zh-cn';
 import dayjs from 'dayjs';
@@ -20,15 +21,20 @@ if (module.hot) {
     module.hot.accept();
 }
 
+Sentry.init({dsn: "https://11f12914dc114782b37d9d94c8839a40@o414598.ingest.sentry.io/5304319"});
+
 ReactDOM.render(
     <ConfigProvider locale={zh_CN}>
         <Provider {...Stores}>
             <Router history={history}>
                 <Switch>
                     <Route path="/user/login" exact component={Login} />
-                    <ErrorBoundary>
+                    <Sentry.ErrorBoundary
+                        fallback={<ErrorBoundary />}
+                        showDialog
+                    >
                         <Home />
-                    </ErrorBoundary>
+                    </Sentry.ErrorBoundary>
                 </Switch>
             </Router>
         </Provider>
