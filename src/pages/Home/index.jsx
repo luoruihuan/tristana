@@ -4,6 +4,7 @@ import {
     Redirect,
     Router
 } from 'react-router-dom';
+import * as Sentry from '@sentry/react';
 import { Layout } from 'antd';
 import { createHashHistory } from 'history';
 import { onConnect, removeAllListeners, disconnect } from '../../components/Socket/index';
@@ -26,6 +27,12 @@ class Index extends Component {
         disconnect();
         removeAllListeners();
         onConnect();
+        try {
+            // let name = ';
+        } catch(e) {
+            console.error(111, e);
+            Sentry.captureException(new Error("test kill not defined"));
+        }
     }
 
     render() {
