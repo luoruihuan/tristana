@@ -72,6 +72,11 @@ class Index extends Component {
                         404
                     </span>
                 </Menu.Item>
+                <Menu.Item key="/errorPage">
+                    <span>
+                        测试sentry
+                    </span>
+                </Menu.Item>
             </Menu>
         );
     }
