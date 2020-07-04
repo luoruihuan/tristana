@@ -7,6 +7,7 @@ const AddGoods = lazy(() => import(/* webpackChunkName: "AddGoods"*/'./pages/Add
 const Counter = lazy(() => import(/* webpackChunkName: "Counter"*/'./pages/Counter/index'));
 const Login = lazy(() => import(/* webpackChunkName: "Login"*/'./pages/User/login'));
 const Error = lazy(() => import(/* webpackChunkName: "Error"*/'./pages/User/error'));
+const ErrorPage = lazy(() => import(/* webpackChunkName: "ErrorPage"*/'./pages/Error/index'));
 
 const routes = [
     {
@@ -30,9 +31,14 @@ const routes = [
         component: Counter
     },
     {
-        // 错误页面
+        // 权限或者404页面
         path: '/error',
         component: Error
+    },
+    {
+        // 错误页面
+        path: '/errorPage',
+        component: ErrorPage
     }
 ];
 

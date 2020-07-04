@@ -29,12 +29,9 @@ ReactDOM.render(
             <Router history={history}>
                 <Switch>
                     <Route path="/user/login" exact component={Login} />
-                    <Sentry.ErrorBoundary
-                        fallback={<ErrorBoundary />}
-                        showDialog
-                    >
+                    <ErrorBoundary>
                         <Home />
-                    </Sentry.ErrorBoundary>
+                    </ErrorBoundary>
                 </Switch>
             </Router>
         </Provider>

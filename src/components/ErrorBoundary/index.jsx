@@ -6,11 +6,13 @@
  * @Last Modified time: 2020-07-01 18:19:16
  */
 import React from 'react';
+import { Result, Button } from 'antd';
+import * as Sentry from '@sentry/react';
 
 class ErrorBoundary extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { hasError: false, info: '' };
+        this.state = { hasError: false, info: '', eventId: '' };
     }
   
     static getDerivedStateFromError(error) {
@@ -20,14 +22,33 @@ class ErrorBoundary extends React.Component {
 
     componentDidCatch(error, info) {
         this.setState({
-            info: info.componentStack
+            info: error + ''
+        });
+        const userId = Math.random().toString(36).substr(2, 9);
+        Sentry.withScope((scope) => {
+            scope.setExtras(info.componentStack);
+            scope.setUser({
+                id: userId,
+                username: 'testUser',
+                ip_address: '',
+                email: ''
+            });
+            const eventId = Sentry.captureException(error);
+            this.setState({ eventId });   
         });
     }
   
     render() {
         if (this.state.hasError) {
             // 你可以渲染任何自定义的降级 UI
-            return <h1>{this.state.info}</h1>;
+            return (
+                <Result
+                    status="500"
+                    title="500"
+                    subTitle={this.state.info}
+                    extra={<Button type="primary" onClick={() => Sentry.showReportDialog({ eventId: this.state.eventId })}>Report feedback</Button>}
+                />
+            );
         }
   
         return this.props.children; 
