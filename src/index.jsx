@@ -21,7 +21,7 @@ if (module.hot) {
     module.hot.accept();
 }
 
-Sentry.init({dsn: "https://11f12914dc114782b37d9d94c8839a40@o414598.ingest.sentry.io/5304319"});
+Sentry.init({ dsn: "https://11f12914dc114782b37d9d94c8839a40@o414598.ingest.sentry.io/5304319" });
 
 ReactDOM.render(
     <ConfigProvider locale={zh_CN}>
