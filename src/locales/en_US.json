@@ -1,20 +1,5 @@
 {
-    "samp": {
-        "index": {
-            "logout": "Logout"
-        },
-        "policyEngine": {
-            "title": "Policy Engine",
-            "nasClients": {
-                "title": "Nas Clients",
-                "item": {
-                    "nasName": "NAS Name",
-                    "startNASIp": "Start NAS IP",
-                    "endNASIp": "End NAS IP",
-                    "description": "Description",
-                    "dm_attributes": "DM Attributes"
-                }
-            }
-        }
-    }
+    "订单系统": "ORDER-SYSTEM",
+    "消息": "MESSAGE",
+    "飞科": "FAKER"
 }

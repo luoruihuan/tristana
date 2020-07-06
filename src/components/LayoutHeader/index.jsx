@@ -1,24 +1,21 @@
 import React, { Component } from 'react';
 import { UserOutlined } from '@ant-design/icons';
 import { withRouter } from 'react-router-dom';
-import { Avatar, Dropdown, Menu } from 'antd';
+import { Avatar, Dropdown, Menu, Tag } from 'antd';
 import intl from 'react-intl-universal';
+import Event from './../../utils/event';
 import './index.less';
 
-const locales = {
-    "en-US": require('../../locales/en_US.json'),
-    "zh-CN": require('../../locales/zh-CN.json')
-};
+// const locales = {
+//     "en_US": require('../../locales/en_US.json'),
+//     "zh_CN": require('../../locales/zh_CH.json')
+// };
 
 class Index extends Component {
     constructor(props) {
         super(props);
-        this.state = { initDone: false };
+        this.state = { lang: 'zh_CN' };
         this.signOut = this.signOut.bind(this);
-    }
-
-    componentDidMount() {
-        this.loadLocales();
     }
 
     signOut() {
@@ -27,16 +24,9 @@ class Index extends Component {
         history.replace('/user/login');
     }
 
-    loadLocales() {
-        // init method will load CLDR locale data according to currentLocale
-        // react-intl-universal is singleton, so you should init it only once in your app
-        intl.init({
-            currentLocale: 'en-US', // TODO: determine locale here
-            locales
-        }).then(() => {
-            // After loading CLDR locale data, start to render
-            this.setState({initDone: true});
-        });
+    changeIntl = () => {
+        Event.emit('changeLanguage', this.state.lang == 'zh_CN' ? 'en_US' : 'zh_CN');
+        this.setState({ lang: this.state.lang == 'zh_CN' ? 'en_US' : 'zh_CN' });
     }
 
     render() {
@@ -52,20 +42,15 @@ class Index extends Component {
         return (
             <section className="layoutHeader">
                 <div className="headeLeft">
-                    订单系统
+                    {intl.get('订单系统') ? intl.get('订单系统') : intl.get('ORDER-SYSTEM')}
                 </div>
-                {
-                    this.state.initDone &&
-                    <div>
-                        {intl.get('SIMPLE')}
-                    </div>
-                }
                 <div className="headerRight">
-                    <span className="message">消息</span>
+                    <Tag className="intl" onClick={this.changeIntl}>{this.state.lang == 'zh_CN' ? '中文' : 'English'}</Tag>
+                    <span className="message">{intl.get('消息') ? intl.get('消息') : intl.get('MESSAGE')}</span>
                     <Dropdown className="dropDown" overlay={menu}>
                         <div>
                             <Avatar className="avatar" size={28} icon={<UserOutlined />} />
-                            <span className="name">Faker</span>
+                            <span className="name">{intl.get('飞科') ? intl.get('飞科') : intl.get('FAKER')}</span>
                         </div>
                     </Dropdown>
                 </div>
