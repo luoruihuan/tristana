@@ -1,13 +1,20 @@
 import React, { Component } from 'react';
 import { UserOutlined } from '@ant-design/icons';
 import { withRouter } from 'react-router-dom';
-import { Avatar, Dropdown, Menu } from 'antd';
+import { Avatar, Dropdown, Menu, Tag } from 'antd';
+import intl from 'react-intl-universal';
+import Event from './../../utils/event';
 import './index.less';
+
+// const locales = {
+//     "en_US": require('../../locales/en_US.json'),
+//     "zh_CN": require('../../locales/zh_CH.json')
+// };
 
 class Index extends Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = { lang: 'zh_CN' };
         this.signOut = this.signOut.bind(this);
     }
 
@@ -15,6 +22,11 @@ class Index extends Component {
         const { history } = this.props;
         localStorage.token = '';
         history.replace('/user/login');
+    }
+
+    changeIntl = () => {
+        Event.emit('changeLanguage', this.state.lang == 'zh_CN' ? 'en_US' : 'zh_CN');
+        this.setState({ lang: this.state.lang == 'zh_CN' ? 'en_US' : 'zh_CN' });
     }
 
     render() {
@@ -30,14 +42,15 @@ class Index extends Component {
         return (
             <section className="layoutHeader">
                 <div className="headeLeft">
-                    订单系统
+                    {intl.get('订单系统') ? intl.get('订单系统') : intl.get('ORDER-SYSTEM')}
                 </div>
                 <div className="headerRight">
-                    <span className="message">消息</span>
+                    <Tag className="intl" onClick={this.changeIntl}>{this.state.lang == 'zh_CN' ? '中文' : 'English'}</Tag>
+                    <span className="message">{intl.get('消息') ? intl.get('消息') : intl.get('MESSAGE')}</span>
                     <Dropdown className="dropDown" overlay={menu}>
                         <div>
                             <Avatar className="avatar" size={28} icon={<UserOutlined />} />
-                            <span className="name">Faker</span>
+                            <span className="name">{intl.get('飞科') ? intl.get('飞科') : intl.get('FAKER')}</span>
                         </div>
                     </Dropdown>
                 </div>
