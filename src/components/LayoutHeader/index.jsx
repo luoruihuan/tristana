@@ -6,11 +6,6 @@ import intl from 'react-intl-universal';
 import Event from './../../utils/event';
 import './index.less';
 
-// const locales = {
-//     "en_US": require('../../locales/en_US.json'),
-//     "zh_CN": require('../../locales/zh_CH.json')
-// };
-
 class Index extends Component {
     constructor(props) {
         super(props);
