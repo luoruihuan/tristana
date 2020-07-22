@@ -77,6 +77,11 @@ class Index extends Component {
                         测试sentry
                     </span>
                 </Menu.Item>
+                <Menu.Item key="/hook">
+                    <span>
+                        Hook
+                    </span>
+                </Menu.Item>
             </Menu>
         );
     }
