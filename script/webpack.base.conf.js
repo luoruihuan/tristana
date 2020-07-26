@@ -10,6 +10,7 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 module.exports = {
     stats: {
@@ -46,7 +47,10 @@ module.exports = {
         rules: [
             {
                 test: /\.(js|jsx)$/,
-                loader: 'babel-loader'
+                // loader: 'babel-loader',
+                exclude: /node_modules/,
+                loader: require.resolve('babel-loader'),
+                options: { plugins: [require.resolve('react-refresh/babel')].filter(Boolean) }
             },
             {
                 test: /\.(css|less)$/,
@@ -135,7 +139,8 @@ module.exports = {
         CopyPlugin: new CopyPlugin([
             { from: './src/assets/js', to: '../dist/assets/js', toType: 'dir' }
         ]),
-        HotModuleReplacementPlugin: new webpack.HotModuleReplacementPlugin()
+        HotModuleReplacementPlugin: new webpack.HotModuleReplacementPlugin(),
+        ReactRefreshWebpackPlugin: new ReactRefreshWebpackPlugin()
     },
     devServer: {
         contentBase: path.resolve(__dirname, 'dist'),

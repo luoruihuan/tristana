@@ -18,7 +18,8 @@ module.exports = {
         webpackBase.plugins.ContextReplacementPlugin,
         webpackBase.plugins.DefinePlugin,
         webpackBase.plugins.AntdDayjsWebpackPlugin,
-        webpackBase.plugins.HotModuleReplacementPlugin
+        webpackBase.plugins.ReactRefreshWebpackPlugin
+        // webpackBase.plugins.HotModuleReplacementPlugin
     ],
     devServer: webpackBase.devServer,
     watchOptions: webpackBase.watchOptions
