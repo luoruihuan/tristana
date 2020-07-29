@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import * as Sentry from '@sentry/react';
 import { ConfigProvider } from 'antd';
 import intl from 'react-intl-universal';
@@ -19,15 +18,15 @@ import './styles/index.less';
 const history = createHashHistory();
 
 const locales = {
-    "en_US": require('./locales/en_US.json'),
-    "zh_CN": require('./locales/zh_CH.json')
+    'en_US': require('./locales/en_US.json'),
+    'zh_CN': require('./locales/zh_CH.json')
 };
 
 // if (module.hot) {
 //     module.hot.accept();
 // }
 
-Sentry.init({ dsn: "https://11f12914dc114782b37d9d94c8839a40@o414598.ingest.sentry.io/5304319" });
+Sentry.init({ dsn: 'https://11f12914dc114782b37d9d94c8839a40@o414598.ingest.sentry.io/5304319' });
 
 export default class App extends React.Component {
     constructor(props) {

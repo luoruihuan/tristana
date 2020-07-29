@@ -3,7 +3,7 @@
  * @Author: Jiang
  * @Date: 2019-06-12 15:21:19
  * @Last Modified by: Jiang
- * @Last Modified time: 2020-07-01 18:19:16
+ * @Last Modified time: 2020-07-29 21:04:22
  */
 import React from 'react';
 import { Result, Button } from 'antd';
@@ -15,7 +15,7 @@ class ErrorBoundary extends React.Component {
         this.state = { hasError: false, info: '', eventId: '' };
     }
   
-    static getDerivedStateFromError(error) {
+    static getDerivedStateFromError() {
         // 更新 state 使下一次渲染可以显示降级 UI
         return { hasError: true };
     }

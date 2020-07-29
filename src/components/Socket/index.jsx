@@ -4,10 +4,10 @@
  * @Author: Jiang
  * @Date: 2019-08-27 18:00:15
  * @Last Modified by: Jiang
- * @Last Modified time: 2020-06-16 22:19:15
+ * @Last Modified time: 2020-07-29 21:04:10
  */
 
-import io from 'socket.io-client';
+// import io from 'socket.io-client';
 
 let SOCKET = '';
 

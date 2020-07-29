@@ -5,7 +5,7 @@ class Index extends Component {
     }
 
     componentDidMount() {
-        kill;
+        
     }
 
     render() {
