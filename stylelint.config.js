@@ -1,6 +1,6 @@
 module.exports = {
     'extends': 'stylelint-config-standard',
-    'ignoreFiles': ['**/*.js', '**/*.jsx', '**/*.png', '**/*.jpg', '**/*.jpeg', '**/*.gif', '**/*.mp3'],
+    'ignoreFiles': ['**/*.js', '**/*.jsx', '**/*.png', '**/*.jpg', '**/*.jpeg', '**/*.gif', '**/*.mp3', '**/*.json'],
     'rules': {
         'at-rule-no-unknown': [ true, {
             'ignoreAtRules': [

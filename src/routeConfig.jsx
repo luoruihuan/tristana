@@ -1,14 +1,14 @@
 // 路由配置文件
 import React, { lazy } from 'react';
-import PrivateRoute from './components/PrivateRoute/index';
+import PrivateRoute from 'components/PrivateRoute/index';
 
-const Dashboard = lazy(() => import(/* webpackChunkName: "Dashboard"*/'./pages/Dashboard/index'));
-const AddGoods = lazy(() => import(/* webpackChunkName: "AddGoods"*/'./pages/AddGoods/index'));
-const Counter = lazy(() => import(/* webpackChunkName: "Counter"*/'./pages/Counter/index'));
-const Login = lazy(() => import(/* webpackChunkName: "Login"*/'./pages/User/login'));
-const Error = lazy(() => import(/* webpackChunkName: "Error"*/'./pages/User/error'));
-const ErrorPage = lazy(() => import(/* webpackChunkName: "ErrorPage"*/'./pages/Error/index'));
-const Hook = lazy(() => import(/* webpackChunkName: "Hook"*/'./pages/Hook/index'));
+const Dashboard = lazy(() => import(/* webpackChunkName: "Dashboard"*/'pages/Dashboard/index'));
+const AddGoods = lazy(() => import(/* webpackChunkName: "AddGoods"*/'pages/AddGoods/index'));
+const Counter = lazy(() => import(/* webpackChunkName: "Counter"*/'pages/Counter/index'));
+const Login = lazy(() => import(/* webpackChunkName: "Login"*/'pages/User/login'));
+const Error = lazy(() => import(/* webpackChunkName: "Error"*/'pages/User/error'));
+const ErrorPage = lazy(() => import(/* webpackChunkName: "ErrorPage"*/'pages/Error/index'));
+const Hook = lazy(() => import(/* webpackChunkName: "Hook"*/'pages/Hook/index'));
 
 const routes = [
     {

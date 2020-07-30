@@ -1,6 +1,6 @@
 import { observable, action, runInAction } from 'mobx';
 import BasicStore, { initLoading } from '../basicStore';
-import * as api from '../../servers/dashboard';
+import * as api from 'servers/dashboard';
 class DashBoardStore extends BasicStore {
     @observable
     list = [];

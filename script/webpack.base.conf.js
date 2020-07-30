@@ -43,7 +43,20 @@ module.exports = {
         }
     },
     resolve: {
-        extensions: ['.js', '.jsx', '.css', '.less', '.json']
+        extensions: ['.js', '.jsx', '.css', '.less', '.json'],
+        alias: {
+            '@mobx': path.resolve(__dirname, '../src/mobx/'),
+            src: path.resolve(__dirname, '../src/'),
+            components: path.resolve(__dirname, '../src/components/'),
+            assets: path.resolve(__dirname, '../src/assets/'),
+            locales: path.resolve(__dirname, '../src/locales/'),
+            utils: path.resolve(__dirname, '../src/utils/'),
+            servers: path.resolve(__dirname, '../src/servers/'),
+            pages: path.resolve(__dirname, '../src/pages/'),
+            request: path.resolve(__dirname, '../src/request.jsx'),
+            config: path.resolve(__dirname, '../src/config.js'),
+            routeConfig: path.resolve(__dirname, '../src/routeConfig.jsx')
+        }
     },
     module: {
         rules: [

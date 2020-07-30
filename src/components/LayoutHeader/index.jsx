@@ -3,7 +3,7 @@ import { UserOutlined } from '@ant-design/icons';
 import { withRouter } from 'react-router-dom';
 import { Avatar, Dropdown, Menu, Tag } from 'antd';
 import intl from 'react-intl-universal';
-import Event from './../../utils/event';
+import Event from 'utils/event';
 import './index.less';
 
 class Index extends Component {
