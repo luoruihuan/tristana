@@ -68,8 +68,7 @@ module.exports = {
                 options: {
                     cache: true,
                     emitWarning: true,
-                    failOnError: true,
-                    failOnWarning: true
+                    failOnError: true
                 }
             },
             {
