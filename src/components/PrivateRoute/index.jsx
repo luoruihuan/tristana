@@ -3,7 +3,7 @@
  * @Author: Jiang
  * @Date: 2020-03-11 21:42:00
  * @Last Modified by: Jiang
- * @Last Modified time: 2020-07-30 15:53:53
+ * @Last Modified time: 2020-08-11 11:12:00
  */
 
 import React, { lazy } from 'react';
@@ -37,7 +37,7 @@ class PrivateRoute extends React.Component {
             <Route
                 path={path}
                 exact={exact}
-                strict={strict} render={(props) => (<Component {...props} />)}
+                strict={strict} render={(props) => (<Component {...props} routes={this.props.routes} />)}
             />
         ) : <Error />;
     }
