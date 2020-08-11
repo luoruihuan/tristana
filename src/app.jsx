@@ -22,9 +22,9 @@ const locales = {
     'zh_CN': require('./locales/zh_CH.json')
 };
 
-// if (module.hot) {
-//     module.hot.accept();
-// }
+if (module.hot) {
+    module.hot.accept();
+}
 
 Sentry.init({ dsn: 'https://11f12914dc114782b37d9d94c8839a40@o414598.ingest.sentry.io/5304319' });
 
