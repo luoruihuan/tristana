@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button } from 'antd';
+// import { Button } from 'antd';
 import { inject, observer } from 'mobx-react';
 import { Switch } from 'react-router-dom';
 import PrivateRoute from 'components/PrivateRoute';
@@ -26,7 +26,7 @@ class Index extends Component {
         return (
             <section className="dashboard">
                 <OrderTable list={list} isLoading={dashboardStore.isLoading.get('getTable')} />
-                <Button onClick={() => this.props.history.push('/dashboard/bus')}>二级路由</Button>
+                {/* <Button onClick={() => this.props.history.push('/dashboard/bus')}>二级路由</Button> */}
                 <Switch>
                     {routeConfig}
                 </Switch>

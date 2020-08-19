@@ -55,6 +55,7 @@
     "mini-css-extract-plugin": "^0.8.0",
     "mobx": "^5.13.1",
     "mobx-react": "^6.1.4",
+    "mockjs": "^1.1.0",
     "npm": "^6.10.2",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "postcss-loader": "^3.0.0",
