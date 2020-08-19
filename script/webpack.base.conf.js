@@ -12,8 +12,6 @@ const CompressionPlugin = require('compression-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
-const isDevelopment = process.env.NODE_ENV !== 'production';
-
 module.exports = {
     stats: {
         entrypoints: false,
@@ -77,7 +75,7 @@ module.exports = {
                 // loader: 'babel-loader',
                 exclude: /node_modules/,
                 loader: require.resolve('babel-loader'),
-                options: { plugins: [ isDevelopment && require.resolve('react-refresh/babel')].filter(Boolean) }
+                options: { plugins: [ process.env.ENV_LWD == 'development' && require.resolve('react-refresh/babel')].filter(Boolean) }
             },
             {
                 test: /\.(css|less)$/,
