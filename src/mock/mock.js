@@ -1,6 +1,6 @@
 import Mock from 'mockjs';
 
-const getTable = Mock.mock(location.origin + '/api/getTable', 'post', {
+const getTable = Mock.mock(location.origin + '/api/getTable.json', 'get', {
     'result': [
         {
             orderId: '61011727',
