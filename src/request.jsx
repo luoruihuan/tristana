@@ -24,8 +24,8 @@ service.interceptors.request.use(
         // 每次请求带上时间戳 防刷处理
         if (config.method === 'get') {
             config.params = {
-                ...config.params,
-                timestamp: Date.parse(new Date()) / 1000
+                ...config.params
+                // timestamp: Date.parse(new Date()) / 1000
             };
         }
 
