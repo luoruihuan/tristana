@@ -55,7 +55,8 @@ module.exports = {
             pages: path.resolve(__dirname, '../src/pages/'),
             request: path.resolve(__dirname, '../src/request.jsx'),
             config: path.resolve(__dirname, '../src/config.js'),
-            routeConfig: path.resolve(__dirname, '../src/routeConfig.jsx')
+            routeConfig: path.resolve(__dirname, '../src/routeConfig.jsx'),
+            mock: path.resolve(__dirname, '../src/mock/')
         }
     },
     module: {

@@ -10,7 +10,7 @@ class DashBoardStore extends BasicStore {
     async getTable() {
         const res = await api.getTable();
         runInAction(() => {
-            this.list = res.listData;
+            this.list = res.result;
         });
     }
 }

@@ -13,6 +13,7 @@ import Home from 'src/pages/Home/index';
 import Login  from 'src/pages/User/login';
 import Stores from '@mobx/rootStore';
 import Event from 'utils/event';
+import 'mock/mock.js';
 import './styles/index.less';
 
 const history = createHashHistory();
