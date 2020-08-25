@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Select, Input, InputNumber, DatePicker, Form } from 'antd';
-import { BASE_LAYOUT } from '../../config';
+import { BASE_LAYOUT } from '@config';
 import './index.less';
 
 const { RangePicker } = DatePicker;

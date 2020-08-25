@@ -1,7 +1,7 @@
 import { message } from 'antd';
 import axios from 'axios';
 // import { getCookie } from './utils/index';
-import { BASE_API } from './config';
+import { BASE_API } from '@config';
 
 
 // 创建axios实例

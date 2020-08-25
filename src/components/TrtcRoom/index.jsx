@@ -4,14 +4,14 @@
  * @Author: Jiang
  * @Date: 2019-08-27 18:00:15
  * @Last Modified by: Jiang
- * @Last Modified time: 2020-07-30 15:54:02
+ * @Last Modified time: 2020-08-25 17:42:38
  */
 import React from 'react';
 import { inject, observer } from 'mobx-react';
 import { Popconfirm, Spin, Button } from 'antd';
 import TRTC from 'trtc-js-sdk';
-import request from '../../request';
-import { isEmpty, formatSeconds, logger } from 'utils';
+import request from '@request';
+import { isEmpty, formatSeconds, logger } from '@utils';
 import './index.less';
 
 @inject('videoStore')

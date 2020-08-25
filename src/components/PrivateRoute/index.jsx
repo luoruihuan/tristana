@@ -3,14 +3,14 @@
  * @Author: Jiang
  * @Date: 2020-03-11 21:42:00
  * @Last Modified by: Jiang
- * @Last Modified time: 2020-08-11 11:12:00
+ * @Last Modified time: 2020-08-25 17:42:30
  */
 
 import React, { lazy } from 'react';
 import { Route, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const Error = lazy(() => import(/* webpackChunkName: "Error"*/'pages/User/error'));
+const Error = lazy(() => import(/* webpackChunkName: "Error"*/'@pages/User/error'));
 
 class PrivateRoute extends React.Component {
 

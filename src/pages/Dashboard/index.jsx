@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import { Button } from 'antd';
 import { inject, observer } from 'mobx-react';
 import { Switch } from 'react-router-dom';
-import PrivateRoute from 'components/PrivateRoute';
+import PrivateRoute from '@components/PrivateRoute';
 import { Table } from 'antd';
 import './index.less';
 
