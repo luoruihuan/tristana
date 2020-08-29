@@ -3,7 +3,7 @@
  * @Author: Jiang
  * @Date: 2019-06-13 16:45:59
  * @Last Modified by: Jiang
- * @Last Modified time: 2020-07-29 21:04:33
+ * @Last Modified time: 2020-08-29 09:57:13
  */
 
 import React, { Component } from 'react';
@@ -11,7 +11,13 @@ import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import './login.less';
 
-class Login extends Component {
+interface IProps {
+    history: {
+        push(url: string): void;
+    }
+}
+
+class Login extends Component<IProps> {
     constructor(props) {
         super(props);
         this.state = { };

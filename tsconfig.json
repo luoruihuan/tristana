@@ -1,0 +1,39 @@
+{
+    "compilerOptions": {
+        "allowSyntheticDefaultImports": true,
+        "strict": true,
+        "forceConsistentCasingInFileNames": true,
+        "allowJs": true,
+        "outDir": "./dist/",
+        "esModuleInterop": true,
+        "sourceMap": true,
+        "noImplicitAny": false,
+        "module": "esnext",
+        "moduleResolution": "node",
+        "isolatedModules": true,
+        "importHelpers": true,
+        "lib": [ "esnext", "dom", "dom.iterable"],
+        "skipLibCheck": false,
+        "jsx": "react",
+        "typeRoots": ["node", "node_modules/@types", "./typings"],
+        "baseUrl": ".src",
+        "paths": {
+            "@mobx": [".src/mobx/*"],
+            "@src": [".src/*"],
+            "@components": [".src/components/*"],
+            "@assets": [".src/assets/*"],
+            "@locales": [".src/locales/*"],
+            "@utils": [".src/utils/*"],
+            "@servers": [".src/servers/*"],
+            "@pages": [".src/pages/*"],
+            "@request": [".src/request.tsx*"],
+            "@config": [".src/config.ts*"],
+            "@routeConfig": [".src/routeConfig.tsx*"],
+            "@mock": [".src/mock/*"]
+        },
+    },
+    "include": [
+        "./src/**/*",
+        "./declaration.d.ts"
+    ]
+}

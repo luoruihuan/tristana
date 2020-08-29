@@ -20,6 +20,8 @@
     "@babel/preset-stage-2": "^7.8.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.3.3",
     "@sentry/react": "^5.18.1",
+    "@types/react": "^16.9.48",
+    "@types/react-dom": "^16.9.8",
     "antd": "^4.5.3",
     "antd-dayjs-webpack-plugin": "^1.0.0",
     "axios": "^0.19.2",
@@ -104,5 +106,11 @@
       "stylelint",
       "git add"
     ]
+  },
+  "devDependencies": {
+    "awesome-typescript-loader": "^5.2.1",
+    "source-map-loader": "^1.0.2",
+    "ts-import-plugin": "^1.6.6",
+    "typescript": "^4.0.2"
   }
 }

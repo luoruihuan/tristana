@@ -5,7 +5,7 @@ module.exports = {
     devtool: 'eval-source-map',
     mode: 'development',
     entry: {
-        app: ['./src/index.jsx']
+        app: ['./src/index.tsx']
     },
     resolve: webpackBase.resolve,
     module: webpackBase.module,

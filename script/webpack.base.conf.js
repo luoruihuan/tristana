@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
+const tsImportPluginFactory = require('ts-import-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -41,7 +42,7 @@ module.exports = {
         }
     },
     resolve: {
-        extensions: ['.js', '.jsx', '.css', '.less', '.json'],
+        extensions: ['.ts', '.tsx', '.js', '.jsx', '.css', '.less', '.json'],
         alias: {
             '@mobx': path.resolve(__dirname, '../src/mobx/'),
             '@src': path.resolve(__dirname, '../src/'),
@@ -51,14 +52,32 @@ module.exports = {
             '@utils': path.resolve(__dirname, '../src/utils/'),
             '@servers': path.resolve(__dirname, '../src/servers/'),
             '@pages': path.resolve(__dirname, '../src/pages/'),
-            '@request': path.resolve(__dirname, '../src/request.jsx'),
-            '@config': path.resolve(__dirname, '../src/config.js'),
-            '@routeConfig': path.resolve(__dirname, '../src/routeConfig.jsx'),
+            '@request': path.resolve(__dirname, '../src/request.tsx'),
+            '@config': path.resolve(__dirname, '../src/config.ts'),
+            '@routeConfig': path.resolve(__dirname, '../src/routeConfig.tsx'),
             '@mock': path.resolve(__dirname, '../src/mock/')
         }
     },
     module: {
         rules: [
+            {
+                test: /\.(tsx|ts)?$/,
+                exclude: /node_modules/,
+                loader: 'awesome-typescript-loader'
+                // options: {
+                //     getCustomTransformers: () => ({
+                //         before: [
+                //             tsImportPluginFactory(
+                //                 [{
+                //                     libraryName: 'antd',
+                //                     libraryDirectory: 'lib',
+                //                     style: 'css'
+                //                 }]
+                //             )
+                //         ]
+                //     }),
+                // },
+            },
             {
                 enforce: 'pre',
                 test: /\.(js|jsx)$/,
