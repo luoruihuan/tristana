@@ -10,7 +10,7 @@
         "process": true,
         "__dirname": true
     },
-    "parser": "babel-eslint",
+    "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true,
@@ -22,7 +22,8 @@
     "plugins": [
         "react",
         "standard",
-        "promise"
+        "promise",
+        "@typescript-eslint"
     ],
     "rules": {
         "quotes": [
