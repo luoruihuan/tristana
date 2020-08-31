@@ -4,7 +4,7 @@ import {
     Redirect,
     Router
 } from 'react-router-dom';
-import { Layout } from 'antd';
+import { Layout, Spin } from 'antd';
 import { createHashHistory } from 'history';
 import { onConnect, removeAllListeners, disconnect } from '@components/Socket/index';
 import LayoutHeader from '@components/LayoutHeader/index';
@@ -48,7 +48,7 @@ class Index extends Component {
                             <LayoutHeader />
                         </Header>
                         <Content className="homeContent">
-                            <Suspense fallback={<div>Loading...</div>}>
+                            <Suspense fallback={<section className="page-spin"><Spin /></section>}>
                                 <Switch>
                                     {routeConfig}
                                     <Redirect
