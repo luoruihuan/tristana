@@ -4,8 +4,8 @@ import zh_CN from 'antd/lib/locale-provider/zh_CN';
 import { Provider } from 'mobx-react';
 import { Switch, Router, Route } from 'react-router-dom';
 import { createHashHistory } from 'history';
-import Login  from '@src/pages/User/login';
-import '@mock/mock.js';
+import Login  from './pages/User/login';
+import './mock/mock';
 import './styles/index.less';
 
 const history = createHashHistory();

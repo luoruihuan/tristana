@@ -1,8 +1,8 @@
 // 路由配置文件
 import React, { lazy } from 'react';
-import PrivateRoute from '@components/PrivateRoute/index';
+import PrivateRoute from './components/PrivateRoute/index';
 
-const Login = lazy(() => import(/* webpackChunkName: "Login"*/'@pages/User/login'));
+const Login = lazy(() => import(/* webpackChunkName: "Login"*/'./pages/User/login'));
 
 const routes = [
     {

@@ -3,7 +3,7 @@
  * @Author: Jiang
  * @Date: 2020-03-11 21:42:00
  * @Last Modified by: Jiang
- * @Last Modified time: 2020-08-29 10:04:20
+ * @Last Modified time: 2020-09-03 13:51:27
  */
 
 import React, { lazy, ReactType } from 'react';
@@ -47,14 +47,14 @@ class PrivateRoute extends React.Component<IProps, IState> {
 
     render() {
         let { component, path = '/', exact = false, strict = false } = this.props;
-        const Comp: ReactType = this.props.component
+        const Comp: ReactType = this.props.component;
         return (
             <Route
                 path={path}
                 exact={exact}
                 strict={strict} render={(props) => (<Comp {...props} routes={this.props.routes} />)}
             />
-        )
+        );
     };
 }
 
