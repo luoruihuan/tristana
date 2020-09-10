@@ -35,8 +35,8 @@ module.exports = {
         "no-var": 2,
         "semi": ["error", "always"],
         "no-irregular-whitespace": 0,
-        "no-trailing-spaces": 0,
-        "eol-last": 0,
+        "no-trailing-spaces": 1,
+        "eol-last": 1,
         "no-unused-vars": [
             1,
             {
@@ -52,7 +52,8 @@ module.exports = {
         "no-cond-assign": 2,
         "no-const-assign": 2,
         "no-delete-var": 2,
-        "no-dupe-keys": 0,
+        "no-dupe-keys": 2,
+        "use-isnan": 2,
         "no-duplicate-case": 2,
         "no-dupe-args": 2,
         "no-empty": 2,
@@ -66,7 +67,7 @@ module.exports = {
         "no-script-url": 2,
         "no-use-before-define": 2,
         "jsx-quotes": [
-            0,
+            1,
             "prefer-double"
         ],
         "react/display-name": 0,
