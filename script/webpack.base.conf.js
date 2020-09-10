@@ -63,20 +63,20 @@ module.exports = {
             {
                 test: /\.(tsx|ts)?$/,
                 exclude: /node_modules/,
-                loader: 'awesome-typescript-loader'
-                // options: {
-                //     getCustomTransformers: () => ({
-                //         before: [
-                //             tsImportPluginFactory(
-                //                 [{
-                //                     libraryName: 'antd',
-                //                     libraryDirectory: 'lib',
-                //                     style: 'css'
-                //                 }]
-                //             )
-                //         ]
-                //     }),
-                // },
+                loader: 'awesome-typescript-loader',
+                options: {
+                    getCustomTransformers: () => ({
+                        before: [
+                            tsImportPluginFactory(
+                                [{
+                                    libraryName: 'antd',
+                                    libraryDirectory: 'lib',
+                                    style: 'css'
+                                }]
+                            )
+                        ]
+                    })
+                }
             },
             {
                 enforce: 'pre',
