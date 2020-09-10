@@ -1,5 +1,9 @@
 module.exports = {
-    "extends": "eslint:recommended",
+    "extends": [
+        "eslint:recommended",
+        "prettier",
+        "prettier/@typescript-eslint",
+    ],
     "env": {
         "browser": true,
         "commonjs": true,
@@ -36,7 +40,7 @@ module.exports = {
         "semi": ["error", "always"],
         "no-irregular-whitespace": 0,
         "no-trailing-spaces": 1,
-        "eol-last": 1,
+        "eol-last": 0,
         "no-unused-vars": [
             1,
             {
