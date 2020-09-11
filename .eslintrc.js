@@ -40,30 +40,6 @@ module.exports = {
         react: {
             version: "latest"
         },
-        "import/resolver": {
-            webpack: {
-                config: path.resolve(root, 'script/webpack.base.conf.js')
-            }
-        }
-        // "import/resolver": {
-        //     alias: {
-        //         map: [
-        //             ['@mobx', './src/mobx/'],
-        //             ['@src', './src/'],
-        //             ['@components', './src/components/'],
-        //             ['@assets', './src/assets/'],
-        //             ['@locales', './src/locales/'],
-        //             ['@utils', './src/utils/'],
-        //             ['@servers', './src/servers/'],
-        //             ['@pages', './src/pages/'],
-        //             ['@request', './src/request.tsx'],
-        //             ['@config', './src/config.tx'],
-        //             ['@routeConfig', './src/routeConfig.tsx'],
-        //             ['@mock', './src/mock/'],
-        //         ],
-        //         extensions: ['.ts', '.tsx', '.js', '.jsx', '.json']
-        //     }
-        // }
     },
     rules: {
         "quotes": [
