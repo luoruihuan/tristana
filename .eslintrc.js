@@ -1,22 +1,25 @@
+const path = require('path');
+const root = __dirname;
+
 module.exports = {
-    "extends": [
+    extends: [
         "eslint:recommended",
         "plugin:react/recommended",
         "prettier",
         "prettier/@typescript-eslint",
     ],
-    "env": {
+    env: {
         "browser": true,
         "commonjs": true,
         "es6": true
     },
-    "globals": {
+    globals: {
         "$": true,
         "process": true,
         "__dirname": true
     },
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
+    parser: "@typescript-eslint/parser",
+    parserOptions: {
         "ecmaFeatures": {
             "jsx": true,
             "modules": true
@@ -24,20 +27,52 @@ module.exports = {
         "sourceType": "module",
         "ecmaVersion": 6
     },
-    "plugins": [
+    plugins: [
         "react",
         "standard",
         "promise",
         "@typescript-eslint"
     ],
-    "rules": {
+    settings: {
+        "import/ignore": [
+            "node_modules"
+        ],
+        react: {
+            version: "latest"
+        },
+        "import/resolver": {
+            webpack: {
+                config: path.resolve(root, 'script/webpack.base.conf.js')
+            }
+        }
+        // "import/resolver": {
+        //     alias: {
+        //         map: [
+        //             ['@mobx', './src/mobx/'],
+        //             ['@src', './src/'],
+        //             ['@components', './src/components/'],
+        //             ['@assets', './src/assets/'],
+        //             ['@locales', './src/locales/'],
+        //             ['@utils', './src/utils/'],
+        //             ['@servers', './src/servers/'],
+        //             ['@pages', './src/pages/'],
+        //             ['@request', './src/request.tsx'],
+        //             ['@config', './src/config.tx'],
+        //             ['@routeConfig', './src/routeConfig.tsx'],
+        //             ['@mock', './src/mock/'],
+        //         ],
+        //         extensions: ['.ts', '.tsx', '.js', '.jsx', '.json']
+        //     }
+        // }
+    },
+    rules: {
         "quotes": [
             2,
             "single"
         ],
         "no-console": 0,
         "no-debugger": 1,
-        "no-var": 2,
+        "no-var": 1,
         "semi": ["error", "always"],
         "no-irregular-whitespace": 0,
         "no-trailing-spaces": 1,
@@ -129,13 +164,5 @@ module.exports = {
         "arrow-parens": 0,
         "arrow-spacing": 0,
         "camelcase": 0
-    },
-    "settings": {
-        "import/ignore": [
-            "node_modules"
-        ],
-        "react": {
-            "version": "latest"
-        }
     }
 }

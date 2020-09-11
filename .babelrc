@@ -13,9 +13,7 @@
                 "corejs": 3
             }
         ],
-        [
-            "@babel/preset-react"
-        ]
+        ["@babel/preset-react"]
     ],
     "plugins": [
         ["@babel/plugin-proposal-optional-chaining"],
@@ -26,11 +24,32 @@
         ["@babel/plugin-syntax-dynamic-import"],
         ["@babel/plugin-proposal-json-strings"],
         [
-            "import", {
+            "import",
+            {
                 "libraryName": "antd",
                 "libraryDirectory": "es",
                 "style": true
             }
         ]
+        // [
+        //     "module-resolver",
+        //     {
+        //         "root": ["./src"],
+        //         "alias": {
+        //             "@mobx": "./src/mobx/",
+        //             "@src": "./src/",
+        //             "@components": "./src/components/",
+        //             "@assets": "./src/assets/",
+        //             "@locales": "./src/locales/",
+        //             "@utils": "./src/utils/",
+        //             "@servers": "./src/servers/",
+        //             "@pages": "./src/pages/",
+        //             "@request": "./src/request.tsx",
+        //             "@config": "./src/config.tx",
+        //             "@routeConfig": "./src/routeConfig.tsx",
+        //             "@mock": "./src/mock/"
+        //         }
+        //     }
+        // ]
     ]
 }
