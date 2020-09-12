@@ -2,10 +2,23 @@
 import React, { lazy } from 'react';
 import PrivateRoute from './components/PrivateRoute/index';
 
-const Login = lazy(() => import(/* webpackChunkName: "Login"*/'./pages/User/login'));
+const Dashboard = lazy(() => import(/* webpackChunkName: "Dashboard"*/'@pages/Dashboard/index'));
+const Bus = lazy(() => import(/* webpackChunkName: "Bus"*/'@pages/Bus/index'));
+const Login = lazy(() => import(/* webpackChunkName: "Login"*/'@pages/User/login'));
 const Error = lazy(() => import(/* webpackChunkName: "Error"*/'@pages/User/error'));
 
 const routes = [
+    {
+        // 仪表盘页
+        path: '/dashboard',
+        component: Dashboard,
+        routes: [
+            {
+                path: '/dashboard/bus',
+                component: Bus
+            }
+        ]
+    },
     {
         // 登录页
         path: '/user/login',
