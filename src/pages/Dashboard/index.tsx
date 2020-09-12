@@ -20,15 +20,11 @@ class Dashboard extends Component<IProps> {
 
     componentDidMount() {
         const { dashboardStore } = this.props;
-
-        console.log(111, dashboardStore);
         dashboardStore.getTable();
     }
 
     render() {
         const { dashboardStore: { list }, dashboardStore } = this.props;
-
-        console.log(222, dashboardStore);
         const RouteWithSubRoutes = route => <PrivateRoute path={route.path} component={route.component} routes={route.routes} />;
 
         const routeConfig = this.props.routes.map((route, i) => <RouteWithSubRoutes key={i} {...route} />);

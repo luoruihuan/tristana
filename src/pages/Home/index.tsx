@@ -9,7 +9,6 @@ import { createHashHistory } from 'history';
 import { onConnect, removeAllListeners, disconnect } from '@components/Socket/index';
 import LayoutHeader from '@components/LayoutHeader/index';
 import Menu from './components/menu';
-import * as stores from '@mobx/rootStore';
 import routeConfig from '@src/routeConfig';
 import './index.less';
 
@@ -19,7 +18,7 @@ const history = createHashHistory();
 class Index extends Component {
     constructor(props) {
         super(props);
-        this.state = { };
+        this.state = {};
     }
 
     componentDidMount() {
@@ -30,7 +29,7 @@ class Index extends Component {
 
     render() {
         return (
-            <Router history={history} {...stores}>
+            <Router history={history}>
                 <Layout className="homeLayout">
                     <Sider
                         style={{

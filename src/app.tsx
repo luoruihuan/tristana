@@ -5,6 +5,7 @@ import { Provider } from 'mobx-react';
 import { Switch, Router, Route } from 'react-router-dom';
 import { createHashHistory } from 'history';
 import Login from '@pages/User/login';
+import Stores from '@mobx/rootStore';
 import Home from '@src/pages/Home/index';
 import '@mock/mock';
 import './styles/index.less';
@@ -20,7 +21,7 @@ export default class App extends React.Component {
     render() {
         return (
             <ConfigProvider locale={zh_CN}>
-                <Provider>
+                <Provider {...Stores}>
                     <Router history={history}>
                         <Switch>
                             <Route path="/user/login" exact component={Login} />
