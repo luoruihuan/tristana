@@ -45,38 +45,13 @@
         "system/": true,
         "!/system/*/.ps*": true
     },
-    // 解决eslint本地和全局查找问题
-    "eslint.workingDirectories": [{
-            "directory": "./recorderClient",
-            "changeProcessCWD": true
-        },
-        {
-            "directory": "./commonVideoClient",
-            "changeProcessCWD": true
-        },
-        {
-            "directory": "./MedicalAdjust",
-            "changeProcessCWD": true
-        },
-        {
-            "directory": "./tristana",
-            "changeProcessCWD": true
-        },
-        {
-            "directory": "./lucian",
-            "changeProcessCWD": true
-        },
-        {
-            "directory": "./LiveCenterClient",
-            "changeProcessCWD": true
-        },
-        {
-            "directory": "./LiveCenterCustomer",
-            "changeProcessCWD": true
-        }
-    ],
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact"
+    ],
     "typescript.tsdk": "node_modules/typescript/lib",
     "emmet.includeLanguages": {
         "wxml": "html"
