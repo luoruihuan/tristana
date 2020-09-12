@@ -8,7 +8,8 @@ import './index.less';
 
 interface IProps {
     dashboardStore: any,
-    routes: any
+    routes: any,
+    history: any
 }
 
 @inject('dashboardStore')

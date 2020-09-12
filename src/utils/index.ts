@@ -24,7 +24,7 @@ export function logger(level: string, msg: any) {
 // 读取cookie
 export function getCookie() {
     const cookies = document.cookie.split(';');
-    let cookie;
+    let cookie: any;
     cookies.forEach(item => {
         if(item.split('=')[0].trim() == 'token') {
             cookie = item.split('=')[1];

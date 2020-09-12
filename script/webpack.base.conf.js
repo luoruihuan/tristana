@@ -25,7 +25,7 @@ module.exports = {
         minimizer: [
             // 压缩js
             new TerserPlugin({
-                test: /\.(jsx|js)$/,
+                test: /\.(tsx|ts)$/,
                 extractComments: true,
                 parallel: true,
                 cache: true
@@ -55,9 +55,6 @@ module.exports = {
             '@utils': path.resolve(__dirname, '../src/utils/'),
             '@servers': path.resolve(__dirname, '../src/servers/'),
             '@pages': path.resolve(__dirname, '../src/pages/'),
-            '@request': path.resolve(__dirname, '../src/request.tsx'),
-            '@config': path.resolve(__dirname, '../src/config.ts'),
-            '@routeConfig': path.resolve(__dirname, '../src/routeConfig.tsx'),
             '@mock': path.resolve(__dirname, '../src/mock/')
         }
     },
