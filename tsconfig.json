@@ -19,18 +19,15 @@
         "rootDirs": ["./src"],
         "baseUrl": "./src",
         "paths": {
-            "@mobx/*": ["mobx/*"],
             "@src/*": ["*"],
-            "@components/*": ["components/*"],
             "@assets/*": ["assets/*"],
+            "@components/*": ["components/*"],
             "@locales/*": ["locales/*"],
-            "@utils/*": ["utils/*"],
-            "@servers/*": ["servers/*"],
+            "@mock/*": ["mock/*"],
             "@pages/*": ["pages/*"],
-            "@request/*": ["request.tsx*"],
-            "@config/*": ["config.ts*"],
-            "@routeConfig/*": ["routeConfig.tsx*"],
-            "@mock/*": ["mock/*"]
+            "@mobx/*": ["mobx/*"],
+            "@utils/*": ["utils/*"],
+            "@servers/*": ["servers/*"]
         }
     },
     "include": ["./src/**/*", "./declaration.d.ts"]

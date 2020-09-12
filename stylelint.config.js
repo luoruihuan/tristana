@@ -3,7 +3,7 @@ module.exports = {
         'stylelint-config-standard',
         'stylelint-config-prettier'
     ],
-    'ignoreFiles': ['**/*.js', '**/*.jsx', '**/*.png', '**/*.jpg', '**/*.jpeg', '**/*.gif', '**/*.mp3', '**/*.json'],
+    'ignoreFiles': ['**/*.ts', '**/*.tsx', '**/*.png', '**/*.jpg', '**/*.jpeg', '**/*.gif', '**/*.mp3', '**/*.json'],
     'rules': {
         'at-rule-no-unknown': [true, {
             'ignoreAtRules': [
@@ -18,10 +18,11 @@ module.exports = {
             'ignore': 'empty-lines'
         }],
         'declaration-block-trailing-semicolon': 'always',
-        'no-missing-end-of-source-newline': true,
         'selector-pseudo-class-no-unknown': [true, {
             ignorePseudoClasses: ['global']
         }],
+        'block-closing-brace-newline-after': 'always',
+        'declaration-block-semicolon-newline-after': 'always',
         'no-descending-specificity': null,
         'selector-list-comma-newline-after': 'always',
         'selector-pseudo-element-colon-notation': 'single'
