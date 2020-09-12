@@ -25,7 +25,7 @@ module.exports = {
         minimizer: [
             // 压缩js
             new TerserPlugin({
-                test: /\.(tsx|ts)$/,
+                test: /\.(jsx|js)$/,
                 extractComments: true,
                 parallel: true,
                 cache: true

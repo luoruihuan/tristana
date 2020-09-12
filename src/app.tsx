@@ -19,8 +19,8 @@ import './styles/index.less';
 const history = createHashHistory();
 
 const locales = {
-    'en_US': require('./locales/en_US.json'),
-    'zh_CN': require('./locales/zh_CH.json')
+    'en_US': require('@locales/en_US.json'),
+    'zh_CN': require('@locales/zh_CH.json')
 };
 
 // if (module.hot) {
