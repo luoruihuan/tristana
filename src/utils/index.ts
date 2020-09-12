@@ -100,6 +100,34 @@ export function isStatic(value: any) {
     );
 }
 
+// 格式化秒，转换成00:00:00
+export function formatSeconds(value: number) {
+    // 秒
+    let theTime: any = '00';
+    // 分
+    let theTime1: any = '00';
+    // 小时
+    let theTime2: any = '00';
+    if(value > 60) {
+        theTime1 = parseInt((value / 60).toString());
+        theTime = parseInt((value % 60).toString());
+        if(theTime1 > 60) {
+            theTime2 = parseInt((theTime1 / 60).toString());
+            theTime1 = parseInt((theTime1 % 60).toString());
+            if(theTime2 > 24) {
+                theTime2 = parseInt((theTime2 % 24).toString());
+            }
+        }
+    } else {
+        theTime = value;
+    }
+    let result = '';
+    result = '' + (parseInt(theTime) >= 10 ? parseInt(theTime) : '0' + parseInt(theTime));
+    result = '' + (parseInt(theTime1) >= 10 ? parseInt(theTime1) : '0' + parseInt(theTime1)) + ':' + result;
+    result = '' + (parseInt(theTime2) > 10 ? parseInt(theTime2) : '0' + parseInt(theTime2)) + ':' + result;
+    return result;
+}
+
 // 判断数据是不是Object类型的数据
 export function isPlainObject(obj: object) {
     return Object.prototype.toString.call(obj) === '[object Object]';
