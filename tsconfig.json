@@ -10,28 +10,57 @@
         "outDir": "./dist/",
         "esModuleInterop": true,
         "sourceMap": true,
-        "noImplicitAny": false,
         "module": "esnext",
         "moduleResolution": "node",
         "isolatedModules": true,
         "importHelpers": true,
-        "lib": ["esnext", "dom", "dom.iterable"],
-        "skipLibCheck": false,
+        "lib": [
+            "esnext",
+            "dom",
+            "dom.iterable"
+        ],
         "jsx": "react",
-        "typeRoots": ["node", "node_modules/@types", "./typings"],
-        "rootDirs": ["./src"],
+        "typeRoots": [
+            "node",
+            "node_modules/@types",
+            "./typings"
+        ],
+        "rootDirs": [
+            "./src"
+        ],
         "baseUrl": "./src",
         "paths": {
-            "@src/*": ["*"],
-            "@assets/*": ["assets/*"],
-            "@components/*": ["components/*"],
-            "@locales/*": ["locales/*"],
-            "@mock/*": ["mock/*"],
-            "@pages/*": ["pages/*"],
-            "@mobx/*": ["mobx/*"],
-            "@utils/*": ["utils/*"],
-            "@servers/*": ["servers/*"]
+            "@src/*": [
+                "*"
+            ],
+            "@assets/*": [
+                "assets/*"
+            ],
+            "@components/*": [
+                "components/*"
+            ],
+            "@locales/*": [
+                "locales/*"
+            ],
+            "@mock/*": [
+                "mock/*"
+            ],
+            "@pages/*": [
+                "pages/*"
+            ],
+            "@mobx/*": [
+                "mobx/*"
+            ],
+            "@utils/*": [
+                "utils/*"
+            ],
+            "@servers/*": [
+                "servers/*"
+            ]
         }
     },
-    "include": ["./src/**/*", "./declaration.d.ts"]
+    "include": [
+        "./src/**/*",
+        "./declaration.d.ts"
+    ]
 }
