@@ -13,7 +13,7 @@ module.exports = {
         }],
         'indentation': 4,
         'number-leading-zero': null,
-        'unit-whitelist': ['em', 'rem', 's', 'px', 'deg', 'all', 'vh', '%'],
+        'unit-allowed-list': ['em', 'rem', 's', 'px', 'deg', 'all', 'vh', '%'],
         'no-eol-whitespace': [true, {
             'ignore': 'empty-lines'
         }],

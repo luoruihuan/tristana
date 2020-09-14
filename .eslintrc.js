@@ -104,9 +104,9 @@ module.exports = {
                 "children": true
             }
         ],
-        "indent": ["error", 4, {
-            "SwitchCase": 1
-        }],
+        // "indent": ["error", 4, {
+        //     "SwitchCase": 1
+        // }],
         "react/jsx-indent": ["error", 4],
         "react/jsx-key": 2,
         "react/jsx-no-bind": 0,

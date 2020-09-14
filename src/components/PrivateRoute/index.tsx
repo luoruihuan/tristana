@@ -3,13 +3,13 @@
  * @Author: Jiang
  * @Date: 2020-03-11 21:42:00
  * @Last Modified by: Jiang
- * @Last Modified time: 2020-09-10 17:59:23
+ * @Last Modified time: 2020-09-14 10:15:56
  */
 
-import React, { lazy, ReactType } from 'react';
+import React, { lazy } from 'react';
 import { Route, withRouter } from 'react-router-dom';
 
-// const Error = lazy(() => import(/* webpackChunkName: "Error"*/'@pages/User/error'));
+const Error = lazy(() => import(/* webpackChunkName: "Error"*/'@pages/User/error'));
 
 interface IProps {
     history: {
@@ -46,15 +46,14 @@ class PrivateRoute extends React.Component<IProps, IState> {
     }
 
     render() {
-        let { component, path = '/', exact = false, strict = false } = this.props;
-        const Comp: ReactType = this.props.component;
-        return (
+        let { component: Component, path = '/', exact = false, strict = false } = this.props;
+        return this.state.isAuthenticated ? (
             <Route
                 path={path}
                 exact={exact}
-                strict={strict} render={(props) => (<Comp {...props} routes={this.props.routes} />)}
+                strict={strict} render={(props) => (<Component {...props} routes={this.props.routes} />)}
             />
-        );
+        ) : <Error />;
     };
 }
 

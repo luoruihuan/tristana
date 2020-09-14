@@ -3,7 +3,7 @@
  * @Author: Jiang
  * @Date: 2020-03-18 23:03:34
  * @Last Modified by: Jiang
- * @Last Modified time: 2020-09-12 16:13:15
+ * @Last Modified time: 2020-09-14 10:16:50
  */
 import { action, autorun, observable, extendObservable, computed } from 'mobx';
 
@@ -61,6 +61,7 @@ const storage = {
         }
     },
 
+    // eslint-disable-next-line no-unused-vars
     sync: (key, type) => { }
 };
 
