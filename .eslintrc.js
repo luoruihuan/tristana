@@ -31,7 +31,8 @@ module.exports = {
         "react",
         "standard",
         "promise",
-        "@typescript-eslint"
+        "@typescript-eslint",
+        "react-hooks"
     ],
     settings: {
         "import/ignore": [
@@ -82,6 +83,14 @@ module.exports = {
         "no-return-assign": 0,
         "no-script-url": 2,
         "no-use-before-define": 2,
+        "no-extra-boolean-cast": 0,
+        "no-unreachable": 1,
+        "comma-dangle": 2,
+        "no-mixed-spaces-and-tabs": 2,
+        "prefer-arrow-callback": 0,
+        "arrow-parens": 0,
+        "arrow-spacing": 0,
+        "camelcase": 0,
         "jsx-quotes": [
             1,
             "prefer-double"
@@ -107,6 +116,8 @@ module.exports = {
         // "indent": ["error", 4, {
         //     "SwitchCase": 1
         // }],
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn",
         "react/jsx-indent": ["error", 4],
         "react/jsx-key": 2,
         "react/jsx-no-bind": 0,
@@ -129,16 +140,8 @@ module.exports = {
         "react/react-in-jsx-scope": 2,
         "react/self-closing-comp": 0,
         "react/sort-comp": 0,
-        "no-extra-boolean-cast": 0,
         "react/no-array-index-key": 0,
         "react/no-deprecated": 1,
-        "react/jsx-equals-spacing": 2,
-        "no-unreachable": 1,
-        "comma-dangle": 2,
-        "no-mixed-spaces-and-tabs": 2,
-        "prefer-arrow-callback": 0,
-        "arrow-parens": 0,
-        "arrow-spacing": 0,
-        "camelcase": 0
+        "react/jsx-equals-spacing": 2
     }
 }

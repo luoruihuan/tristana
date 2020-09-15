@@ -4,7 +4,7 @@ import BasicStore, { initLoading } from '../basicStore';
 
 export class DashboardStore extends BasicStore {
     @observable
-    list = [];
+    list: any = [];
 
     @initLoading
     @action

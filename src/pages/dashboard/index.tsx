@@ -7,11 +7,6 @@ import { observer } from 'mobx-react';
 import { Table } from 'antd';
 import './index.less';
 
-interface IProps {
-    dashboardStore: any,
-    history: any
-}
-
 function Dashboard() {
     const { dashboardStore } = useRootStore();
 
@@ -74,5 +69,3 @@ function OrderTable({ list, isLoading }) {
         />
     );
 }
-
-// export default Dashboard;
