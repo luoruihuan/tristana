@@ -3,7 +3,7 @@
  * @Date: 2019-07-18 10:33:21
  */
 import React, { Component } from 'react';
-import { HomeOutlined, ShoppingCartOutlined, AccountBookOutlined } from '@ant-design/icons';
+import { HomeOutlined, ShoppingCartOutlined } from '@ant-design/icons';
 import { withRouter } from 'react-router-dom';
 import { Menu } from 'antd';
 
@@ -70,7 +70,7 @@ class Index extends Component<IProps, IState> {
                         添加商品
                     </span>
                 </Menu.Item>
-                <Menu.Item key="/error">
+                <Menu.Item key="/user/error">
                     <span>
                         404
                     </span>

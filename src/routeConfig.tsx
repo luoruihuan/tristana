@@ -32,7 +32,7 @@ const routes = [
     },
     {
         // 权限或者404页面
-        path: '/error',
+        path: '/user/error',
         component: Error
     }
 ];
