@@ -31,8 +31,7 @@ module.exports = {
         "react",
         "standard",
         "promise",
-        "@typescript-eslint",
-        "react-hooks"
+        "@typescript-eslint"
     ],
     settings: {
         "import/ignore": [
@@ -116,8 +115,6 @@ module.exports = {
         // "indent": ["error", 4, {
         //     "SwitchCase": 1
         // }],
-        "react-hooks/rules-of-hooks": "error",
-        "react-hooks/exhaustive-deps": "warn",
         "react/jsx-indent": ["error", 4],
         "react/jsx-key": 2,
         "react/jsx-no-bind": 0,
