@@ -77,7 +77,7 @@ module.exports = {
             },
             {
                 enforce: 'pre',
-                test: /\.(js|jsx)$/,
+                test: /\.(ts|tsx|js|jsx)$/,
                 exclude: /node_modules/,
                 loader: 'eslint-loader',
                 options: {
