@@ -9,6 +9,7 @@
         "allowJs": true,
         "outDir": "./dist/",
         "esModuleInterop": true,
+        "noImplicitAny": false,
         "sourceMap": true,
         "module": "esnext",
         "moduleResolution": "node",
@@ -19,6 +20,7 @@
             "dom",
             "dom.iterable"
         ],
+        "skipLibCheck": false,
         "jsx": "react",
         "typeRoots": [
             "node",
