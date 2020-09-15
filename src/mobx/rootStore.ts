@@ -1,4 +1,4 @@
-import DashboardStore from './dashboard/store';
+import DashboardStore from './dashboard2/store';
 
 class Store {
     dashboardStore: DashboardStore;
