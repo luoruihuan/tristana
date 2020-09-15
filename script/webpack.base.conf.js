@@ -25,7 +25,7 @@ module.exports = {
         minimizer: [
             // 压缩js
             new TerserPlugin({
-                test: /\.(jsx|js)$/,
+                test: /\.(ts|tsx|js|jsx)$/,
                 extractComments: true,
                 parallel: true,
                 cache: true
@@ -77,7 +77,7 @@ module.exports = {
             },
             {
                 enforce: 'pre',
-                test: /\.(js|jsx)$/,
+                test: /\.(ts|tsx|js|jsx)$/,
                 exclude: /node_modules/,
                 loader: 'eslint-loader',
                 options: {
