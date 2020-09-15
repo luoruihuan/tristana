@@ -3,7 +3,7 @@
  * @Author: Jiang
  * @Date: 2020-03-11 21:42:00
  * @Last Modified by: Jiang
- * @Last Modified time: 2020-09-14 10:15:56
+ * @Last Modified time: 2020-09-15 16:21:08
  */
 
 import React, { lazy } from 'react';
@@ -41,7 +41,7 @@ class PrivateRoute extends React.Component<IProps, IState> {
             const { history } = this.props;
             setTimeout(() => {
                 history.replace('/user/login');
-            }, 3000);
+            }, 1000);
         }
     }
 

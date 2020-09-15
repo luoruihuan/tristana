@@ -86,16 +86,6 @@ export default class App extends React.Component<IProps, IState> {
                         </Switch>
                     </Router>
                 </Provider>
-                {/* <Provider {...Stores}>
-                    <Router history={history}>
-                        <Switch>
-                            <Route path="/user/login" exact component={Login} />
-                            <ErrorBoundary>
-                                <Home />
-                            </ErrorBoundary>
-                        </Switch>
-                    </Router>
-                </Provider> */}
             </ConfigProvider>
         );
     }
