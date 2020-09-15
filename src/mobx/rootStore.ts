@@ -1,10 +1,5 @@
-import Dashboard from './dashboard/store';
+import { RouterStore } from 'mobx-react-router';
 
-class Store {
-    dashboardStore: Dashboard;
+export const routerStore = new RouterStore();
 
-    constructor() {
-        this.dashboardStore = new Dashboard();
-    }
-}
-export default new Store();
+export { default as dashboardStore } from './dashboard/store';

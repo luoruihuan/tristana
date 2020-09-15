@@ -1,45 +1,68 @@
-import React, { Component } from 'react';
+import React from 'react';
 // import { Button } from 'antd';
-import { inject, observer } from 'mobx-react';
-import { Switch } from 'react-router-dom';
+import { useRootStore } from '@mobx/useRootStore';
+import { observer } from 'mobx-react';
+// import { Switch } from 'react-router-dom';
 import PrivateRoute from '@components/PrivateRoute';
 import { Table } from 'antd';
 import './index.less';
 
 interface IProps {
     dashboardStore: any,
-    routes: any,
     history: any
 }
 
-@inject('dashboardStore')
-@observer
-class Dashboard extends Component<IProps> {
-    constructor(props) {
-        super(props);
-    }
+function Dashboard() {
+    const { dashboardStore } = useRootStore();
 
-    componentDidMount() {
-        const { dashboardStore } = this.props;
+    React.useEffect(() => {
         dashboardStore.getTable();
-    }
+    }, []);
 
-    render() {
-        const { dashboardStore: { list }, dashboardStore } = this.props;
-        const RouteWithSubRoutes = route => <PrivateRoute path={route.path} component={route.component} routes={route.routes} />;
+    const RouteWithSubRoutes = route => <PrivateRoute path={route.path} component={route.component} routes={route.routes} />;
 
-        const routeConfig = this.props.routes.map((route, i) => <RouteWithSubRoutes key={i} {...route} />);
-        return (
-            <section className="dashboard">
-                <OrderTable list={list} isLoading={dashboardStore.isLoading.get('getTable')} />
-                {/* <Button onClick={() => this.props.history.push('/dashboard/bus')}>二级路由</Button> */}
-                <Switch>
-                    {routeConfig}
-                </Switch>
-            </section>
-        );
-    }
+    // const routeConfig = this.props.routes.map((route, i) => <RouteWithSubRoutes key={i} {...route} />);
+    return (
+        <section className="dashboard">
+            <OrderTable list={dashboardStore.list} isLoading={dashboardStore.isLoading.get('getTable')} />
+            {/* <Button onClick={() => this.props.history.push('/dashboard/bus')}>二级路由</Button> */}
+            {/* <Switch>
+                {routeConfig}
+            </Switch> */}
+        </section>
+    );
 }
+
+export default observer(Dashboard);
+
+// @inject('dashboardStore')
+// @observer
+// class Dashboard extends Component<IProps> {
+//     constructor(props) {
+//         super(props);
+//     }
+
+//     componentDidMount() {
+//         const { dashboardStore } = this.props;
+//         dashboardStore.getTable();
+//     }
+
+//     render() {
+//         const { dashboardStore: { list }, dashboardStore } = this.props;
+//         const RouteWithSubRoutes = route => <PrivateRoute path={route.path} component={route.component} routes={route.routes} />;
+
+//         const routeConfig = this.props.routes.map((route, i) => <RouteWithSubRoutes key={i} {...route} />);
+//         return (
+//             <section className="dashboard">
+//                 <OrderTable list={list} isLoading={dashboardStore.isLoading.get('getTable')} />
+//                 {/* <Button onClick={() => this.props.history.push('/dashboard/bus')}>二级路由</Button> */}
+//                 <Switch>
+//                     {routeConfig}
+//                 </Switch>
+//             </section>
+//         );
+//     }
+// }
 
 // 表格列配置
 const columns = [
@@ -81,4 +104,4 @@ function OrderTable({ list, isLoading }) {
     );
 }
 
-export default Dashboard;
+// export default Dashboard;

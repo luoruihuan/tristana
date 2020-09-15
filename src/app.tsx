@@ -5,14 +5,15 @@ import intl from 'react-intl-universal';
 import dayjs from 'dayjs';
 import zh_CN from 'antd/lib/locale-provider/zh_CN';
 import en_US from 'antd/lib/locale-provider/en_US';
-import { Provider } from 'mobx-react';
+// import { useLocalStore } from 'mobx-react';
+// import { Provider } from 'mobx-react';
 import { Switch, Router, Route } from 'react-router-dom';
 import { createHashHistory } from 'history';
 import ErrorBoundary from '@components/ErrorBoundary/index';
 import Home from '@src/pages/home/index';
 import Login from '@src/pages/user/login';
-import Stores from '@mobx/rootStore';
 import Event from '@utils/event';
+import * as rootStore from '@mobx/rootStore';
 import '@mock/mock.ts';
 import './styles/index.less';
 
@@ -36,6 +37,13 @@ interface IProps {
 interface IState {
     antdLang: string | boolean;
 }
+
+const storeContext = React.createContext<IStore | null>(null);
+
+const Provider = ({ children }: { children?: React.ReactNode }) => {
+    // const store = useLocalStore(...store);
+    return <storeContext.Provider value={{ ...rootStore }}>{children}</storeContext.Provider>;
+};
 
 export default class App extends React.Component<IProps, IState> {
 
@@ -68,7 +76,7 @@ export default class App extends React.Component<IProps, IState> {
     render() {
         return (
             <ConfigProvider locale={this.state.antdLang ? zh_CN : en_US}>
-                <Provider {...Stores}>
+                <Provider>
                     <Router history={history}>
                         <Switch>
                             <Route path="/user/login" exact component={Login} />
@@ -78,6 +86,16 @@ export default class App extends React.Component<IProps, IState> {
                         </Switch>
                     </Router>
                 </Provider>
+                {/* <Provider {...Stores}>
+                    <Router history={history}>
+                        <Switch>
+                            <Route path="/user/login" exact component={Login} />
+                            <ErrorBoundary>
+                                <Home />
+                            </ErrorBoundary>
+                        </Switch>
+                    </Router>
+                </Provider> */}
             </ConfigProvider>
         );
     }

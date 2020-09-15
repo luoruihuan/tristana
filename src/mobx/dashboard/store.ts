@@ -2,7 +2,7 @@ import { observable, action, runInAction } from 'mobx';
 import * as api from '@servers/dashboard';
 import BasicStore, { initLoading } from '../basicStore';
 
-class DashBoardStore extends BasicStore {
+export class DashboardStore extends BasicStore {
     @observable
     list = [];
 
@@ -16,4 +16,4 @@ class DashBoardStore extends BasicStore {
     }
 }
 
-export default DashBoardStore;
+export default new DashboardStore();

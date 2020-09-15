@@ -20,7 +20,7 @@ interface IProps {
 class Login extends Component<IProps> {
     constructor(props) {
         super(props);
-        this.state = { };
+        this.state = {};
     }
 
     // 表单提交
