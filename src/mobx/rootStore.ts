@@ -1,10 +1,10 @@
-import DashboardStore from './dashboard2/store';
+import Dashboard from './dashboard/store';
 
 class Store {
-    dashboardStore: DashboardStore;
+    dashboardStore: Dashboard;
 
     constructor() {
-        this.dashboardStore = new DashboardStore();
+        this.dashboardStore = new Dashboard();
     }
 }
 export default new Store();
