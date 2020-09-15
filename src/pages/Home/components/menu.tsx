@@ -36,7 +36,7 @@ class Index extends Component<IProps, IState> {
     }
 
     static getDerivedStateFromProps(props, state) {
-        if(props.location.pathname != state.pathname) {
+        if (props.location.pathname != state.pathname) {
             return {
                 pathname: props.location.pathname,
                 selectedKeys: [props.location.pathname]
@@ -70,25 +70,9 @@ class Index extends Component<IProps, IState> {
                         添加商品
                     </span>
                 </Menu.Item>
-                <Menu.Item key="/counter">
-                    <AccountBookOutlined />
-                    <span>
-                        计数器
-                    </span>
-                </Menu.Item>
                 <Menu.Item key="/error">
                     <span>
                         404
-                    </span>
-                </Menu.Item>
-                <Menu.Item key="/errorPage">
-                    <span>
-                        测试sentry
-                    </span>
-                </Menu.Item>
-                <Menu.Item key="/hook">
-                    <span>
-                        Hook
                     </span>
                 </Menu.Item>
             </Menu>

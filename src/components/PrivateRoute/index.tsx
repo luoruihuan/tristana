@@ -41,7 +41,7 @@ class PrivateRoute extends React.Component<IProps, IState> {
             const { history } = this.props;
             setTimeout(() => {
                 history.replace('/user/login');
-            }, 1000);
+            }, 3000);
         }
     }
 
